@@ -6,16 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/art-galleries")
-public class MainController {
+@RequestMapping("/login")
+public class LoginController {
 
-    @GetMapping()
-    public String getArtGalleryPage(Model model){
-        model.addAttribute("bodyContent", "home");
+    @GetMapping
+    public String getLoginPage(Model model){
+        model.addAttribute("bodyContent", "login");
         return "master-template";
     }
-
-
-
-
 }
