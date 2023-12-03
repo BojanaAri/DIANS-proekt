@@ -1,0 +1,44 @@
+
+.navbar{
+    font-size: 20px;
+    margin: 10px 10px;
+
+}
+
+nav {
+    height: 70px;
+}
+
+.navbar-brand{
+    background-image: url("images/logo2-upd.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+#navbarTogglerDemo02 ul li
+{
+    margin: 0 15px;
+}
+
+#navbarTogglerDemo02 ul li a
+{
+    color: #201261;
+    font-weight: bold;
+}
+.form-inline .nav-link{
+    padding: 0 15px;
+    color: #201261;
+}
+
+
+#search{
+    width: 350px;
+    padding-top: 5px;
+}
+
+#search input{
+    border-radius: 15px;
+}
