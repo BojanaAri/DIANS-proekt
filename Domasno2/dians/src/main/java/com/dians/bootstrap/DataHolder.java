@@ -22,7 +22,6 @@ public class DataHolder {
     public void init() {
         galleries = new ArrayList<>();
         users = new ArrayList<>();
-        this.galleries = readJsonFile("src/main/resources/results.json");
         users.add(new User("bokismoki","bs", "boki", "smoki"));
         this.galleries = readJsonFile("src/main/resources/galleriesList.json");
     }
