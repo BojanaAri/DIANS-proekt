@@ -20,25 +20,12 @@
   <link rel="stylesheet" th:href="@{/loginStyle.css}" />
   <link rel="stylesheet" th:href="@{/headerStyle.css}" />
 
-
-  <style>
-    body {
-      background: linear-gradient(to bottom, #d9d5f4, #ffe5e7);
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      font-family: 'Livvic', sans-serif;
-    }
-
-  </style>
-
-
 </head>
 
 <header th:replace="~{fragments/header}"/>
 <body>
 
-
+<div class="background-image"></div>
 <section th:insert="${bodyContent}"> </section>
 
 
