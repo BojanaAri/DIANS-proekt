@@ -1,9 +1,25 @@
 .navbar{
     font-size: 22px;
+    margin: 10px 0;
 }
 
 nav {
     height: 70px;
+
+}
+
+.navbar-brand{
+    background-image: url("images/logo.png");
+    background-size: contain;
+    background-position: center;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+#navbarTogglerDemo02 ul li
+{
+    margin: 0 15px;
 }
 
 .form-inline .nav-link{
