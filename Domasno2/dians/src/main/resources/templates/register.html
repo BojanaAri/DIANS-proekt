@@ -7,34 +7,45 @@
 
     <div class="container" xmlns:th="http://www.thymeleaf.org">
         <form class="form-signin mt-xl-5" method="post" action="/register">
-            <h2 class="form-signin-heading">Регистрирај се!</h2>
+            <h2 class="form-signin-heading stay-tuned">Регистрација</h2>
             <p>
                 <label for="username" class="sr-only">Username</label>
-                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
+                <input type="text" id="username" name="username" class="form-control round" placeholder="Username" required=""
                        autofocus="">
             </p>
             <p>
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                <input type="password" id="password" name="password" class="form-control round" placeholder="Password"
                        required="">
             </p>
             <p>
                 <label for="repeatPassword" class="sr-only">Repeat Password</label>
-                <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" placeholder="Repeat Password"
+                <input type="password" id="repeatPassword" name="repeatPassword" class="form-control round" placeholder="Repeat Password"
                        required="">
             </p>
             <p>
                 <label for="name" class="sr-only">Name</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                <input type="text" id="name" name="name" class="form-control round" placeholder="Name"
                        required="">
             </p>
             <p>
                 <label for="surname" class="sr-only">Surname</label>
-                <input type="text" id="surname" name="surname" class="form-control" placeholder="Surname"
+                <input type="text" id="surname" name="surname" class="form-control round" placeholder="Surname"
                        required="">
             </p>
 
-            <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <div style="width: 318px">
+                <div style="width: 318px" >
+                    <button type="submit" class="btn login-submit">Регистрирај се</button>
+                </div>
+            </div>
+
+            <br/>
+            <hr style="background: #201261"/>
+
+            <p> Имате профил?
+                <a href="/login" style="color: #201261">Најави се!</a>
+            </p>
         </form>
     </div>
 </div>
