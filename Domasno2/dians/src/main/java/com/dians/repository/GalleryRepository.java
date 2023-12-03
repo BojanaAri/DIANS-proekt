@@ -17,7 +17,7 @@ public class GalleryRepository {
     public List<Gallery> search(String text)
     {
         return DataHolder.galleries.stream()
-                .filter(g -> g.getName().contains(text) || g.getAddress().contains(text))
+                .filter(g -> g.getName().contains(text) || g.getAddress().contains(text) )
                 .collect(Collectors.toList());
     }
 }
