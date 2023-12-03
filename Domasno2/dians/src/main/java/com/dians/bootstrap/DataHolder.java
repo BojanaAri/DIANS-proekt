@@ -1,6 +1,7 @@
 package com.dians.bootstrap;
 
 import com.dians.model.Gallery;
+import com.dians.model.User;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,10 +16,13 @@ import java.util.List;
 @Component
 public class DataHolder {
     public static List<Gallery> galleries;
+    public static List<User> users;
 
     @PostConstruct
     public void init() {
         galleries = new ArrayList<>();
+        users = new ArrayList<>();
+        users.add(new User("bokismoki","bs", "boki", "smoki"));
         this.galleries = readJsonFile("src/main/resources/galleriesList.json");
     }
 
