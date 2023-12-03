@@ -24,6 +24,7 @@ public class DataHolder {
         users = new ArrayList<>();
         this.galleries = readJsonFile("src/main/resources/results.json");
         users.add(new User("bokismoki","bs", "boki", "smoki"));
+        this.galleries = readJsonFile("src/main/resources/galleriesList.json");
     }
 
     private List<Gallery> readJsonFile(String filepath) {
