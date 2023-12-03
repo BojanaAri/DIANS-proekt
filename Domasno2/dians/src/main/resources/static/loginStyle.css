@@ -13,24 +13,19 @@
 
 }
 
-#stay-tuned{
+.stay-tuned{
     text-align: center;
     font-style: italic;
     font-weight: bold;
     color: #201261;
 }
 
-#username{
+.round{
     border-radius: 15px;
     width: 318px;
 }
 
-#password{
-    border-radius: 15px;
-    width: 318px;
-}
-
-#login-submit{
+.login-submit{
     width: 150px;
     display: inline-block;
     margin: auto;
