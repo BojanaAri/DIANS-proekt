@@ -32,4 +32,42 @@
     background: #201261;
     color: white;
     border-radius: 20px;
+    text-align: center;
+}
+
+#details-picture{
+    width: 400px;
+    height: 300px;
+    background-image: url("images/nacionalnata-galerija.jpg");
+    background-size: contain;
+    background-position: center;
+}
+
+#details-text{
+    display: inline-block;
+    width: inherit;
+    color: #201261;
+    border-radius: 10px;
+    border-color: #7d7ad4;
+    text-align: center;
+}
+
+.col-md-5, .col-md-7 #details-picture{
+    margin: auto;
+}
+#details-text::placeholder{
+    opacity: 50%;
+    color: #201261;
+}
+.btn:hover{
+    background-color: #d364ff;
+    color: white;
+}
+
+#contact-img{
+    width: 400px;
+    height: 300px;
+    background-image: url("images/izlozba.jpg");
+    background-size: contain;
+    background-position: center;
 }
