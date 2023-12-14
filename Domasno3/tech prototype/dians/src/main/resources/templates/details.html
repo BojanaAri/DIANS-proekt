@@ -10,7 +10,7 @@
             </div>
             <br/>
             <div class="project-info-box">
-                <p th:text="${gallery.getAddress()}" th:style="'margin: 0;'"><b>Address</b></p>
+                <p th:text="${gallery.getAddress()} + ', ' + ${gallery.getCity()}" th:style="'margin: 0;'"><b>Address</b></p>
                 <p th:text=" (${gallery.getWorking_hours()} == 'нема' ? 'Работно време: нема' : ${gallery.getWorking_hours()})"></p>
 
             </div><!-- / project-info-box -->
