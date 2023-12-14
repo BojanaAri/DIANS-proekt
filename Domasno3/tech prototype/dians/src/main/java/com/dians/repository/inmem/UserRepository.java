@@ -1,4 +1,4 @@
-package com.dians.repository;
+package com.dians.repository.inmem;
 
 import com.dians.bootstrap.DataHolder;
 import com.dians.model.User;

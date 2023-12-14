@@ -7,5 +7,5 @@ import java.util.List;
 public interface GalleryService {
     List<Gallery> listAll();
 
-    List<Gallery> search(String text);
+    List<Gallery> search(String address, String name);
 }
