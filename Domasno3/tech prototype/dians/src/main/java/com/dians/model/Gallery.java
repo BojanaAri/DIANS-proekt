@@ -19,18 +19,20 @@ public class Gallery {
     String lat;
     String lon;
     String name;
+    String city;
     String address;
     String working_hours;
     public Gallery() {}
     @JsonCreator
         public Gallery(@JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("name") String name,
-                       @JsonProperty("address") String  address,@JsonProperty("working_hours") String working_hours ) {
+                       @JsonProperty("address") String  address,@JsonProperty("working_hours") String working_hours, @JsonProperty("city") String city ) {
             // constructor logic
             this.lat = lat;
             this.lon = lon;
             this.name = name;
             this.address = address;
             this.working_hours = working_hours;
+            this.city =city;
         }
     }
 
