@@ -21,10 +21,13 @@ public class Gallery {
     String name;
     String city;
     String address;
-    String working_hours;    public Gallery() {}
+    String website;
+    String working_hours;
+    public Gallery() {}
+
     @JsonCreator
         public Gallery(@JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("name") String name,
-                       @JsonProperty("address") String  address,@JsonProperty("working_hours") String working_hours, @JsonProperty("city") String city ) {
+                       @JsonProperty("address") String  address,@JsonProperty("website") String website,@JsonProperty("working_hours") String working_hours, @JsonProperty("city") String city ) {
             // constructor logic
             this.lat = lat;
             this.lon = lon;
@@ -32,12 +35,8 @@ public class Gallery {
             this.address = address;
             this.working_hours = working_hours;
             this.city =city;
+            this.website = website;
         }
     }
 
-//        "lat": "42.0062442315",
-//        "lon": "20.9674207726",
-//        "name": "Национална Установа Уметничка Галерија",
-//        "adress": "Адреса: Илинденска б.б.",
-//        "working hours": "нема"
 
