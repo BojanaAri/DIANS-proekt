@@ -21,8 +21,7 @@ public class Gallery {
     String name;
     String city;
     String address;
-    String working_hours;
-    public Gallery() {}
+    String working_hours;    public Gallery() {}
     @JsonCreator
         public Gallery(@JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("name") String name,
                        @JsonProperty("address") String  address,@JsonProperty("working_hours") String working_hours, @JsonProperty("city") String city ) {
