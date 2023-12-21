@@ -4,15 +4,16 @@ import com.dians.model.User;
 import com.dians.model.exceptions.InvalidArgumentExceptions;
 import com.dians.model.exceptions.InvalidUserCredentialsException;
 import com.dians.model.exceptions.PasswordDoNotMatchException;
-import com.dians.repository.UserRepository;
+import com.dians.repository.inmem.UserRepository;
+import com.dians.repository.jpa.JpaUserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthServiceImplementation implements AuthService{
 
-    private final UserRepository userRepository;
+    private final JpaUserRepository userRepository;
 
-    public AuthServiceImplementation(UserRepository userRepository) {
+    public AuthServiceImplementation(JpaUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -32,7 +33,7 @@ public class AuthServiceImplementation implements AuthService{
             throw new PasswordDoNotMatchException();
 
         User user = new User(username, password,name, surname);
-        userRepository.saveOrUpdate(user);
+        userRepository.save(user);
         return user;
     }
 }

@@ -2,8 +2,9 @@ package com.dians.bootstrap;
 
 import com.dians.model.Gallery;
 import com.dians.model.User;
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
+import com.dians.repository.inmem.GalleryRepository;
+import com.dians.repository.jpa.JpaGalleryRepository;
+import com.dians.repository.jpa.JpaUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -17,13 +18,29 @@ import java.util.List;
 public class DataHolder {
     public static List<Gallery> galleries;
     public static List<User> users;
+    private final JpaGalleryRepository galleryRepository;
+    private final JpaUserRepository userRepository;
 
+
+    public DataHolder(JpaGalleryRepository galleryRepository, JpaUserRepository userRepository) {
+        this.galleryRepository = galleryRepository;
+        this.userRepository = userRepository;
+    }
     @PostConstruct
     public void init() {
         galleries = new ArrayList<>();
         users = new ArrayList<>();
-        users.add(new User("bokismoki","bs", "boki", "smoki"));
-        this.galleries = readJsonFile("src/main/resources/galleriesList.json");
+
+        if (galleryRepository.count() == 0) {
+            this.galleries = readJsonFile("src/main/resources/galleriesList.json");
+            galleryRepository.saveAll(galleries);
+        }
+
+        if (userRepository.count() == 0) {
+            users.add(new User("bokismoki","bs", "boki", "smoki"));
+            userRepository.saveAll(users);
+        }
+
     }
 
     private List<Gallery> readJsonFile(String filepath) {
