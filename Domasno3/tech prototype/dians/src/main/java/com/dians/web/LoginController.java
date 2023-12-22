@@ -3,7 +3,6 @@ package com.dians.web;
 import com.dians.model.User;
 import com.dians.model.exceptions.InvalidUserCredentialsException;
 import com.dians.service.AuthService;
-import com.dians.service.AuthServiceImplementation;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
