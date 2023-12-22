@@ -48,7 +48,7 @@ public class DataHolder {
         }
 
         if (commentRepository.count() == 0) {
-            comments.add(new Comment("beautiful"));
+            comments.add(new Comment("good"));
             commentRepository.saveAll(comments);
         }
 
