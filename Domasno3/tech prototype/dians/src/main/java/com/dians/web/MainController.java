@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/art-galleries")
+@RequestMapping({"/art-galleries","/"})
 public class MainController {
 
     private final GalleryService galleryService;
@@ -23,7 +23,10 @@ public class MainController {
         return "master-template";
     }
 
-
-
+    @GetMapping("/access_denied")
+    public String getAccessDeniedPage(Model model){
+        model.addAttribute("bodyContent", "access-denied");
+        return "master-template";
+    }
 
 }

@@ -1,13 +1,16 @@
-package com.dians.service;
+package com.dians.service.impl;
 
 import com.dians.model.Gallery;
 import com.dians.repository.jpa.JpaGalleryRepository;
+import com.dians.service.GalleryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class GalleryServiceImplementation implements GalleryService{
+public class GalleryServiceImplementation implements GalleryService {
+
 
     private final JpaGalleryRepository galleryRepository;
 
@@ -30,4 +33,8 @@ public class GalleryServiceImplementation implements GalleryService{
     public List<Gallery> search(String text) {
         return galleryRepository.findAllByCityOrName(text, "");
     }
-}
+
+    @Override
+    public Optional<Gallery> getGalleryById(Long id) {
+        return galleryRepository.findById(id);
+}}

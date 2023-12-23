@@ -3,6 +3,7 @@ package com.dians.web;
 import com.dians.model.exceptions.InvalidArgumentExceptions;
 import com.dians.model.exceptions.PasswordDoNotMatchException;
 import com.dians.service.AuthService;
+import com.dians.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/register")
 public class RegisterController {
 
-    private final AuthService authService;
-    public RegisterController(AuthService authService) {
-        this.authService = authService;
+    private final UserService userService;
+    public RegisterController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
@@ -36,7 +37,7 @@ public class RegisterController {
                             @RequestParam String name,
                             @RequestParam String surname){
         try {
-            this.authService.register(username, password, repeatPassword,
+            this.userService.register(username, password, repeatPassword,
                                       name, surname);
             return "redirect:/login";
         } catch (InvalidArgumentExceptions | PasswordDoNotMatchException e) {

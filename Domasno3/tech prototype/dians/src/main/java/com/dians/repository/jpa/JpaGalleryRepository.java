@@ -11,9 +11,9 @@ import java.util.List;
 
 @Repository
 public interface JpaGalleryRepository extends JpaRepository<Gallery, Long> {
-    List<Gallery> findAllByCityOrName(String text,String empty);
 
+    List<Gallery> findAllByCityOrName(String text,String empty);
     @Query(value = "SELECT * FROM gallery g WHERE LOWER(g.city) LIKE LOWER( %:city%)", nativeQuery = true)
     List<Gallery> findAllByCity(@Param("city") String city);
-    List<Gallery> findByCityContainingIgnoreCase(String text);
+
 }

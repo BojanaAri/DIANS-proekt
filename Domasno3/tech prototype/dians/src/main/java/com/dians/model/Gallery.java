@@ -2,10 +2,7 @@ package com.dians.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.lang.reflect.Type;
@@ -23,18 +20,25 @@ public class Gallery {
     String address;
     String website;
     String working_hours;
+    @Column(length = 4000)
+    String image;
     public Gallery() {}
+
     @JsonCreator
         public Gallery(@JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("name") String name,
-                       @JsonProperty("address") String  address,@JsonProperty("website") String website,@JsonProperty("working_hours") String working_hours, @JsonProperty("city") String city ) {
+                       @JsonProperty("address") String  address,@JsonProperty("website") String website,
+                       @JsonProperty("working_hours") String working_hours,
+                       @JsonProperty("city") String city,
+                       @JsonProperty("image") String image) {
             // constructor logic
             this.lat = lat;
             this.lon = lon;
             this.name = name;
             this.address = address;
             this.working_hours = working_hours;
-            this.city =city;
+            this.city = city;
             this.website = website;
+            this.image = image;
         }
     }
 
