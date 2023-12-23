@@ -1,15 +1,13 @@
-package com.dians.service;
+package com.dians.service.impl;
 
 import com.dians.model.User;
-import com.dians.model.exceptions.InvalidArgumentExceptions;
 import com.dians.model.exceptions.InvalidUserCredentialsException;
-import com.dians.model.exceptions.PasswordDoNotMatchException;
-import com.dians.repository.inmem.UserRepository;
 import com.dians.repository.jpa.JpaUserRepository;
+import com.dians.service.AuthService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthServiceImplementation implements AuthService{
+public class AuthServiceImplementation implements AuthService {
 
     private final JpaUserRepository userRepository;
 
@@ -24,7 +22,7 @@ public class AuthServiceImplementation implements AuthService{
         return userRepository.findByUsernameAndPassword(username, password).orElseThrow(InvalidUserCredentialsException::new);
     }
 
-    @Override
+   /* @Override
     public User register(String username, String password, String repeatPassword, String name, String surname) throws InvalidArgumentExceptions, PasswordDoNotMatchException {
         if (username == null || username.isEmpty()|| password==null || password.isEmpty())
             throw new InvalidArgumentExceptions();
@@ -35,5 +33,5 @@ public class AuthServiceImplementation implements AuthService{
         User user = new User(username, password,name, surname);
         userRepository.save(user);
         return user;
-    }
+    }*/
 }

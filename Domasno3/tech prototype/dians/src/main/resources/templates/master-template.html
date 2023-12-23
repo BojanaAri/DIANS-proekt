@@ -31,15 +31,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
 
 
-  <link rel="stylesheet" th:href="@{/loginStyle.css}" />
-  <link rel="stylesheet" th:href="@{/headerStyle.css}" />
-    <link rel="stylesheet" th:href="@{/starRatingStyle.css}" />
+  <link rel="stylesheet" th:href="@{/loginStyle.css}" type="text/css"/>
+  <link rel="stylesheet" th:href="@{/headerStyle.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/starRatingStyle.css}" type="text/css" />
 
   <style>
     body {
       background: linear-gradient(to bottom, #d9d5f4, #ffe5e7);
       margin: 0;
-      padding: 0;
       height: 100vh;
       font-family: 'Livvic', sans-serif;
       color: #381c6b;
@@ -53,7 +52,7 @@
 <body>
 
 
-<section th:insert="${bodyContent}"> </section>
+<section th:insert="${bodyContent}" style="padding-top: 10px;"> </section>
 
 
 </body>

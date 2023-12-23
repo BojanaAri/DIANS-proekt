@@ -1,14 +1,14 @@
-package com.dians.service;
+package com.dians.service.impl;
 
 import com.dians.model.Gallery;
-import com.dians.repository.inmem.GalleryRepository;
 import com.dians.repository.jpa.JpaGalleryRepository;
+import com.dians.service.GalleryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class GalleryServiceImplementation implements GalleryService{
+public class GalleryServiceImplementation implements GalleryService {
 
     private final JpaGalleryRepository galleryRepository;
 

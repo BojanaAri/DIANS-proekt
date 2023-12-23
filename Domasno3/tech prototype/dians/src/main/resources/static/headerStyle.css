@@ -67,7 +67,7 @@ nav {
 }
 
 .sidepanel a:hover {
-    color: #7d7ad4;
+    color: #201261;
 }
 
 .sidepanel .closebtn {
@@ -93,3 +93,16 @@ nav {
 .mySidepanel{
     height: 800px;
 }
+
+.nav-link:hover, #navbarTogglerDemo02 ul li a:hover{
+    color: #d364ff;
+}
+
+#user-profile:hover{
+    color: #d364ff;
+}
+#user-profile{
+    color: #915fc6;
+    font-size: 22px;
+}
+

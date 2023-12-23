@@ -3,7 +3,6 @@ package com.dians.web;
 import com.dians.model.User;
 import com.dians.model.exceptions.InvalidUserCredentialsException;
 import com.dians.service.AuthService;
-import com.dians.service.AuthServiceImplementation;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,12 +34,12 @@ public class LoginController {
         try {
             user = authService.login(request.getParameter("username"),
                                      request.getParameter("password"));
-            // request.getSession().setAttribute("user", user);
-            model.addAttribute("bodyContent", "home");
-            return "master-template";
+            request.getSession().setAttribute("user", user);
+            return "redirect:/profile";
         } catch (InvalidUserCredentialsException e) {
-//             model.addAttribute("hasError", true);
-//            model.addAttribute("error", e.getMessage());
+            model.addAttribute("hasError", true);
+            model.addAttribute("error", e.getMessage());
+
             model.addAttribute("bodyContent", "login");
             return "master-template";
         }

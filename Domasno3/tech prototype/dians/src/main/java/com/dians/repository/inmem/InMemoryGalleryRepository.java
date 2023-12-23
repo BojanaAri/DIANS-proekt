@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class GalleryRepository {
+public class InMemoryGalleryRepository {
     public List<Gallery> findAll()
     {
         return DataHolder.galleries;

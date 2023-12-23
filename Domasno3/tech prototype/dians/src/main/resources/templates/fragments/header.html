@@ -1,11 +1,12 @@
 
+<nav class="navbar navbar-expand-lg " xmlns:sec="http://www.w3.org/1999/xhtml">
 
-<nav class="navbar navbar-expand-lg ">
-
-    <div id="mySidepanel" class="sidepanel" style="margin: 0;text-align: center; height: 800px">
+    <div id="mySidepanel" class="sidepanel" style="margin: 0;text-align: center; height: 800px" sec:authorize="isAuthenticated()">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <img src="/images/avatar.png" style="height: 150px; width: 150px" alt="">
         <a href="/profile">Профил</a>
+        <a href="/login">Најави се</a>
+        <a href="/logout">Одјави се</a>
     </div>
 
     <a class="navbar-brand openbtn" onclick="openNav()"></a>
@@ -13,13 +14,13 @@
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li id="search">
+                <li id="search" >
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active" >
                     <a class="nav-link" href="/art-galleries">ДОМА<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active" >
                     <a class="nav-link" href="/map">МАПА<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
@@ -28,9 +29,12 @@
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a class="nav-item nav-link" href="/login" id="log">Најави се</a>
-                <a class="nav-item nav-link" href="/register">Регистрирај се</a>
-                <a class="nav-item nav-link" href="#">MK | EN</a>
+                <a class="nav-item nav-link"   href="/login" id="log" sec:authorize="isAnonymous()">Најави се</a>
+                <a class="nav-item nav-link"   href="/register" sec:authorize="isAnonymous()">Регистрирај се</a>
+                <img src="/images/avatar.png" style="height: 60px; width:60px" alt="" sec:authorize="isAuthenticated()">
+                <a class="nav-item nav-link"   href="/profile"  id="user-profile" sec:authorize="isAuthenticated()" sec:authentication="name"></a>
+                <a class="nav-item nav-link"   href="/logout" sec:authorize="isAuthenticated()">Одјави се</a>
+                <a class="nav-item nav-link"   href="#">MK | EN</a>
             </form>
         </div>
 </nav>
