@@ -1,7 +1,6 @@
 package com.dians.service;
 
 import com.dians.model.Gallery;
-import com.dians.repository.inmem.GalleryRepository;
 import com.dians.repository.jpa.JpaGalleryRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +20,14 @@ public class GalleryServiceImplementation implements GalleryService{
         return galleryRepository.findAll();
     }
 
+    @Override
+    public List<Gallery> searchByCity(String city) {
+        return galleryRepository.findAllByCity(city);
+    }
+
 
     @Override
-    public List<Gallery> search(String address, String name) {
-        return galleryRepository.searchAllByAddressAndName(address, name);
+    public List<Gallery> search(String text) {
+        return galleryRepository.findAllByCityOrName(text, "");
     }
 }
