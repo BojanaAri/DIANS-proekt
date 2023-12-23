@@ -6,6 +6,7 @@ import com.dians.service.GalleryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GalleryServiceImplementation implements GalleryService {
@@ -22,14 +23,18 @@ public class GalleryServiceImplementation implements GalleryService {
         return galleryRepository.findAll();
     }
 
+    @Override
+    public List<Gallery> searchByCity(String city) {
+        return galleryRepository.findAllByCity(city);
+    }
+
 
     @Override
-    public List<Gallery> search(String address, String name) {
-        return galleryRepository.searchAllByAddressAndName(address, name);
+    public List<Gallery> search(String text) {
+        return galleryRepository.findAllByCityOrName(text, "");
     }
 
     @Override
-    public String getGalleryById(Long id) {
-        return galleryRepository.getGalleryById(id);
-    }
-}
+    public Optional<Gallery> getGalleryById(Long id) {
+        return galleryRepository.findById(id);
+}}

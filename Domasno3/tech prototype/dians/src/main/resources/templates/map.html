@@ -4,22 +4,28 @@
   {
     font-style: italic;
     color: #201261;
-  }
-</style><h2 class="title-main-page" style="
     padding-left: 15%;
     margin-top:10px;
-    margin-bottom: 10px;">Истражи ги галериите</h2>
+    margin-bottom: 10px;
+  }
+</style>
+<div xmlns:th="http://www.thymeleaf.org">
+  <div class="title-main-page">
+<h2 >Истражи ги галериите</h2>
 
-
-  <form>
-    <label>Пребарај:</label>
-    <input type="text">
-    </form>
+  <form class="form-inline" th:method="POST" th:action="@{/map}">
+    <div class="form-group mb-2">
+      <label for="searchText" class="sr-only">Пребарај по Град: </label>
+      <input type="text" class="form-control-plaintext" id="searchText" name="searchText" >
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">ПРЕБАРАЈ</button>
+  </form>
+ </div>
 
   <div class="container">
   <div id="osm-map" style="min-height: 450px;height: 450px; width: 1100px;"></div>
 </div>
-
+</div>
 <script th:inline="javascript">
   var list = [[${galleries}]];
   console.log(list);
