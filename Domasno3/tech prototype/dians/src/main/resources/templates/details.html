@@ -1,5 +1,5 @@
-
-<div class="container" style="height: 400px;" xmlns:th="http://www.thymeleaf.org">
+<div class="container" style="height: 400px;" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
 
     <div class="row" >
         <div class="col-md-5">
@@ -68,8 +68,8 @@
 <!--    </div>-->
 <!--</div>-->
 
-<div class="row">
-    <div class="col-sm" id="details-comment">
+<div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
         <div style="width: inherit; height: 58px;">
             <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
                 <div style="width: inherit; display: flex;">

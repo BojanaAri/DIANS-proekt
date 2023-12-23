@@ -33,7 +33,7 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( (requests) -> requests
-                        .requestMatchers("/", "/art-galleries" ,"/assets/**", "/register", "/contact","/map", "/details/**")
+                        .requestMatchers("/", "/art-galleries" ,"/assets/**", "/register", "/contact","/map", "/details/**", "/login")
                         .permitAll()
                         .requestMatchers("/images/**").permitAll()
                         .requestMatchers("/**.js", "/**.css", "**.json").permitAll()
@@ -41,14 +41,16 @@ public class WebSecurityConfig {
                         .anyRequest()
                         .authenticated()
                 )
-               // .httpBasic(Customizer.withDefaults())
-
-
-                .formLogin((form) -> form
-                        .loginPage("/login.html")
-                        .loginProcessingUrl("/login")
+                .oauth2Login((oath2) -> oath2
+                        .loginPage("/login/oauth2")
                         .permitAll()
-                        .failureUrl("/login?error=BadCredentials")
+                        .failureUrl("/login?error=Invalid-Credentials")
+                        .defaultSuccessUrl("/profile", true)
+                )
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        .permitAll()
+                        .failureUrl("/login?error=Invalid-Credentials")
                         .defaultSuccessUrl("/profile", true)
                 )
                 .logout((logout) -> logout
