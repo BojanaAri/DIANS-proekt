@@ -1,8 +1,13 @@
 package com.dians.bootstrap;
 
+import com.dians.model.Comment;
 import com.dians.model.Gallery;
 import com.dians.model.Role;
 import com.dians.model.User;
+<<<<<<< HEAD
+=======
+import com.dians.repository.jpa.JpaCommentRepository;
+>>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527
 import com.dians.repository.jpa.JpaGalleryRepository;
 import com.dians.repository.jpa.JpaUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,12 +19,14 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
 public class DataHolder {
     public static List<Gallery> galleries;
     public static List<User> users;
+<<<<<<< HEAD
 
     private final JpaGalleryRepository galleryRepository;
     private final JpaUserRepository userRepository;
@@ -29,11 +36,24 @@ public class DataHolder {
         this.galleryRepository = galleryRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+=======
+    public static List<Comment> comments;
+    private final JpaGalleryRepository galleryRepository;
+    private final JpaUserRepository userRepository;
+    private final JpaCommentRepository commentRepository;
+
+
+    public DataHolder(JpaGalleryRepository galleryRepository, JpaUserRepository userRepository, JpaCommentRepository commentRepository) {
+        this.galleryRepository = galleryRepository;
+        this.userRepository = userRepository;
+        this.commentRepository = commentRepository;
+>>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527
     }
     @PostConstruct
     public void init() {
         galleries = new ArrayList<>();
         users = new ArrayList<>();
+        comments = new ArrayList<>();
 
         if (userRepository.count() == 0) {
             users.add(new User("bojana.ari",
@@ -74,6 +94,19 @@ public class DataHolder {
             galleryRepository.saveAll(galleries);
         }
 
+<<<<<<< HEAD
+=======
+        if (userRepository.count() == 0) {
+            users.add(new User("bokismoki","bs", "boki", "smoki"));
+            userRepository.saveAll(users);
+        }
+
+        if (commentRepository.count() == 0) {
+            comments.add(new Comment("good"));
+            commentRepository.saveAll(comments);
+        }
+
+>>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527
     }
 
     private List<Gallery> readJsonFile(String filepath) {

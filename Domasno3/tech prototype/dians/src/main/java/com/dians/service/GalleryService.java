@@ -8,4 +8,5 @@ public interface GalleryService {
     List<Gallery> listAll();
 
     List<Gallery> search(String address, String name);
+    String getGalleryById(Long id);
 }

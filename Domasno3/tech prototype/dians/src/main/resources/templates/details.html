@@ -20,6 +20,7 @@
         <div class="col-md-7">
             <div id="details-picture">
 
+
             </div>
 
         </div><!-- / column -->
@@ -51,18 +52,55 @@
 
 
 </div>
-<div>
-    <div class="row" >
-        <div class="col-sm"></div>
-        <div class="col-sm" id="details-comment">
-            <div style="width: inherit; height: 58px; " >
-                <textarea placeholder="Додај коментар..." id="details-text"></textarea>
+<!--<div>-->
+<!--    <div class="row" >-->
+<!--        <div class="col-sm"></div>-->
+<!--        <div class="col-sm" id="details-comment">-->
+<!--            <div style="width: inherit; height: 58px; " >-->
+<!--                <textarea placeholder="Додај коментар..." id="details-text"></textarea>-->
 
-            </div>
-            <div style="width: inherit; display: flex;">
-                <button type="button" class="btn login-submit">Внеси коментар</button>
-            </div>
+<!--            </div>-->
+<!--            <div style="width: inherit; display: flex;">-->
+<!--                <button type="button" class="btn login-submit">Внеси коментар</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-sm"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="row">
+    <div class="col-sm" id="details-comment">
+        <div style="width: inherit; height: 58px;">
+            <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
+                <div style="width: inherit; display: flex;">
+                    <textarea name="text" placeholder="Додај коментар..." id="details-text"></textarea>
+                </div>
+                <input type="hidden" name="galleryId" th:value="${gallery.id}" />
+
+                <!-- Hidden input for the rating -->
+                <input type="hidden" name="rating" id="rating" />
+
+                <!-- Your star rating inputs... -->
+                <div style="width: inherit; display: flex;">
+                <button type="submit" class="btn login-submit">Внеси коментар</button>
+                </div>
+            </form>
         </div>
-        <div class="col-sm"></div>
+    </div>
+    <div class="col-sm"></div>
+</div>
+
+<br/><br/>
+
+
+
+<div class="container">
+    <div class="row">
+        <th:block th:if="${commentsExist}">
+            <div class="col" th:each="comment : ${comments}">
+                <p th:text="${comment.getText()}"></p>
+            </div>
+        </th:block>
     </div>
 </div>
+

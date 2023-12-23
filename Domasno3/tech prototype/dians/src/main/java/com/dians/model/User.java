@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "users")
@@ -29,7 +31,16 @@ public class User implements UserDetails {
     private boolean isCredentialsNonExpired =  true;
     private boolean isEnabled = true;
 
+<<<<<<< HEAD
     public User(String username, String password, String name, String surname, Role role) {
+=======
+    }
+
+//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+//    private List<Comment> comments;
+
+    public User(String username, String password, String name, String surname) {
+>>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527
         this.username = username;
         this.password = password;
         this.name = name;
@@ -61,4 +72,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
+
+
+
 }
