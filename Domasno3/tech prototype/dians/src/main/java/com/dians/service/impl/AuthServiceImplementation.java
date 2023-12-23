@@ -2,24 +2,19 @@ package com.dians.service.impl;
 
 import com.dians.model.User;
 import com.dians.model.exceptions.InvalidUserCredentialsException;
-<<<<<<<< HEAD:Domasno3/tech prototype/dians/src/main/java/com/dians/service/impl/AuthServiceImplementation.java
-========
 import com.dians.model.exceptions.PasswordDoNotMatchException;
->>>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527:Domasno3/tech prototype/dians/src/main/java/com/dians/service/impl/AuthServiceImpl.java
 import com.dians.repository.jpa.JpaUserRepository;
 import com.dians.service.AuthService;
 import org.springframework.stereotype.Service;
 
 @Service
-<<<<<<<< HEAD:Domasno3/tech prototype/dians/src/main/java/com/dians/service/impl/AuthServiceImplementation.java
+
 public class AuthServiceImplementation implements AuthService {
-========
-public class AuthServiceImpl implements AuthService {
->>>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527:Domasno3/tech prototype/dians/src/main/java/com/dians/service/impl/AuthServiceImpl.java
+
 
     private final JpaUserRepository userRepository;
 
-    public AuthServiceImpl(JpaUserRepository userRepository) {
+    public AuthServiceImplementation(JpaUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

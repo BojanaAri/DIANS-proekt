@@ -4,10 +4,7 @@ import com.dians.model.Comment;
 import com.dians.model.Gallery;
 import com.dians.model.Role;
 import com.dians.model.User;
-<<<<<<< HEAD
-=======
 import com.dians.repository.jpa.JpaCommentRepository;
->>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527
 import com.dians.repository.jpa.JpaGalleryRepository;
 import com.dians.repository.jpa.JpaUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,29 +23,20 @@ import java.util.List;
 public class DataHolder {
     public static List<Gallery> galleries;
     public static List<User> users;
-<<<<<<< HEAD
 
-    private final JpaGalleryRepository galleryRepository;
-    private final JpaUserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-
-    public DataHolder(JpaGalleryRepository galleryRepository, JpaUserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.galleryRepository = galleryRepository;
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-=======
     public static List<Comment> comments;
     private final JpaGalleryRepository galleryRepository;
     private final JpaUserRepository userRepository;
     private final JpaCommentRepository commentRepository;
+    private final PasswordEncoder passwordEncoder;
 
-
-    public DataHolder(JpaGalleryRepository galleryRepository, JpaUserRepository userRepository, JpaCommentRepository commentRepository) {
+    public DataHolder(JpaGalleryRepository galleryRepository, JpaUserRepository userRepository, JpaCommentRepository commentRepository, PasswordEncoder passwordEncoder) {
         this.galleryRepository = galleryRepository;
         this.userRepository = userRepository;
         this.commentRepository = commentRepository;
->>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527
+        this.passwordEncoder = passwordEncoder;
     }
+
     @PostConstruct
     public void init() {
         galleries = new ArrayList<>();
@@ -57,10 +45,10 @@ public class DataHolder {
 
         if (userRepository.count() == 0) {
             users.add(new User("bojana.ari",
-                            passwordEncoder.encode("ba"),
-                            "bojana",
-                            "arizankovska",
-                             Role.ROLE_USER));
+                    passwordEncoder.encode("ba"),
+                    "bojana",
+                    "arizankovska",
+                    Role.ROLE_USER));
             users.add(new User("marija.aceska",
                     passwordEncoder.encode("ma"),
                     "marija",
@@ -94,19 +82,10 @@ public class DataHolder {
             galleryRepository.saveAll(galleries);
         }
 
-<<<<<<< HEAD
-=======
-        if (userRepository.count() == 0) {
-            users.add(new User("bokismoki","bs", "boki", "smoki"));
-            userRepository.saveAll(users);
-        }
-
         if (commentRepository.count() == 0) {
             comments.add(new Comment("good"));
             commentRepository.saveAll(comments);
         }
-
->>>>>>> 6bfefead10acafe1f6aeb7a7e4fbc4f086c62527
     }
 
     private List<Gallery> readJsonFile(String filepath) {
@@ -120,4 +99,3 @@ public class DataHolder {
     }
 
 }
-
