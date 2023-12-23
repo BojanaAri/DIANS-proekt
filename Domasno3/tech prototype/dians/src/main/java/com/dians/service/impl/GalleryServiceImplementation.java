@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 public class GalleryServiceImplementation implements GalleryService {
 
+
     private final JpaGalleryRepository galleryRepository;
 
     public GalleryServiceImplementation(JpaGalleryRepository galleryRepository) {
@@ -25,5 +26,10 @@ public class GalleryServiceImplementation implements GalleryService {
     @Override
     public List<Gallery> search(String address, String name) {
         return galleryRepository.searchAllByAddressAndName(address, name);
+    }
+
+    @Override
+    public String getGalleryById(Long id) {
+        return galleryRepository.getGalleryById(id);
     }
 }

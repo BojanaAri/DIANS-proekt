@@ -34,9 +34,9 @@ public class DataHolder {
         this.galleryRepository = galleryRepository;
         this.userRepository = userRepository;
         this.commentRepository = commentRepository;
-       this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
-  
+
     @PostConstruct
     public void init() {
         galleries = new ArrayList<>();
@@ -45,10 +45,10 @@ public class DataHolder {
 
         if (userRepository.count() == 0) {
             users.add(new User("bojana.ari",
-                            passwordEncoder.encode("ba"),
-                            "bojana",
-                            "arizankovska",
-                             Role.ROLE_USER));
+                    passwordEncoder.encode("ba"),
+                    "bojana",
+                    "arizankovska",
+                    Role.ROLE_USER));
             users.add(new User("marija.aceska",
                     passwordEncoder.encode("ma"),
                     "marija",
@@ -99,4 +99,3 @@ public class DataHolder {
     }
 
 }
-

@@ -2,12 +2,15 @@ package com.dians.service.impl;
 
 import com.dians.model.User;
 import com.dians.model.exceptions.InvalidUserCredentialsException;
+import com.dians.model.exceptions.PasswordDoNotMatchException;
 import com.dians.repository.jpa.JpaUserRepository;
 import com.dians.service.AuthService;
 import org.springframework.stereotype.Service;
 
 @Service
+
 public class AuthServiceImplementation implements AuthService {
+
 
     private final JpaUserRepository userRepository;
 
