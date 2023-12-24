@@ -71,12 +71,11 @@
             </div>
         </div>
     </div>
-
-    <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml"  style="margin-bottom: 30px">
-        <div class="col-md-5" id="details-comment" sec:authorize="isAuthenticated()">
-            <div style=" height: 58px; ">
+    <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
+        <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
+            <div style="width: inherit; height: 58px;">
                 <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
-                    <div style=" ">
+                    <div style="width: inherit; display: flex;">
                         <textarea name="text" placeholder="Додај коментар..." id="details-text"></textarea>
                     </div>
                     <input type="hidden" name="galleryId" th:value="${gallery.id}" />
@@ -85,14 +84,16 @@
                     <input type="hidden" name="rating" id="rating" />
 
                     <!-- Your star rating inputs... -->
-                    <div style="">
+                    <div style="width: inherit; display: flex;">
                         <button type="submit" class="btn login-submit">Внеси коментар</button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="col-md-5"></div>
+        <div class="col-sm"></div>
     </div>
+
+    <br/><br/>
 
 
     <div th:if="${upcomingEventText}" class="upcoming-event-text">
@@ -105,29 +106,6 @@
 
 
 
-<div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
-        <div style="width: inherit; height: 58px;">
-            <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
-                <div style="width: inherit; display: flex;">
-                    <textarea name="text" placeholder="Додај коментар..." id="details-text"></textarea>
-                </div>
-                <input type="hidden" name="galleryId" th:value="${gallery.id}" />
-
-                <!-- Hidden input for the rating -->
-                <input type="hidden" name="rating" id="rating" />
-
-                <!-- Your star rating inputs... -->
-                <div style="width: inherit; display: flex;">
-                    <button type="submit" class="btn login-submit">Внеси коментар</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="col-sm"></div>
-</div>
-
-<br/><br/>
 
 
 <div class="container">
