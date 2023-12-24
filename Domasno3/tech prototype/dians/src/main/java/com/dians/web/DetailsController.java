@@ -60,9 +60,10 @@ public class DetailsController {
         }
 
         // Invoke the service method to add the comment
-        commentService.addComment(comment.getText(), galleryId);
+//        commentService.addComment(comment.getText(), galleryId);
+        galleryService.addComment(comment.getText(), galleryId);
 
         // Redirect to the details page for the corresponding gallery
-        return "redirect:/details/" + galleryId;
+        return "redirect:/details/" + (galleryId - 1);
     }
 }
