@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UserRepository {
+public class InMemoryUserRepository {
 
     public Optional<User> findByUsername(String username){
         return DataHolder.users.stream()

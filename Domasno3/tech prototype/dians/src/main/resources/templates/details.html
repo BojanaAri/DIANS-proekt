@@ -1,5 +1,5 @@
-
-<div class="container" style="height: 400px;" xmlns:th="http://www.thymeleaf.org">
+<div class="container" style="height: 400px;" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
 
     <div class="row" >
         <div class="col-md-5">
@@ -31,22 +31,11 @@
                 border: 1px solid #ccc;
             }
         </style>
-        <div class="container">
-        <div class="gallery-details row">
-            <!-- Gallery Details -->
-            <div class="col">
 
-            <!-- Check for upcoming events and display information using Thymeleaf -->
-            <div th:if="${hasUpcomingEvents}" class="upcoming-events">
-                <!-- Upcoming Events Information -->
-                <p>There are upcoming events in this gallery!</p>
-            </div>
-            </div>
-        </div>
-        </div>
 
         <div class="col-md-7">
             <div id="details-picture">
+
 
             </div>
 
@@ -77,20 +66,60 @@
         </div>
     </div>
 
+    <div class="column">
+        <div class="gallery-details row">
+            <!-- Gallery Details -->
+            <div class="row">
 
-</div>
-<div>
-    <div class="row" >
-        <div class="col-sm"></div>
-        <div class="col-sm" id="details-comment">
-            <div style="width: inherit; height: 58px; " >
-                <textarea placeholder="Додај коментар..." id="details-text"></textarea>
-
-            </div>
-            <div style="width: inherit; display: flex;">
-                <button type="button" class="btn login-submit">Внеси коментар</button>
+                <div th:if="${hasUpcomingEvents}" class="upcoming-events">
+                    <p>There are upcoming events in this gallery!</p>
+                </div>
             </div>
         </div>
-        <div class="col-sm"></div>
+    </div>
+
+    <div th:if="${upcomingEventText}" class="upcoming-event">
+        <!-- Display the upcoming event text -->
+        <p th:text="${upcomingEventText}"></p>
+    </div>
+
+</div>
+
+
+
+
+<div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
+        <div style="width: inherit; height: 58px;">
+            <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
+                <div style="width: inherit; display: flex;">
+                    <textarea name="text" placeholder="Додај коментар..." id="details-text"></textarea>
+                </div>
+                <input type="hidden" name="galleryId" th:value="${gallery.id}" />
+
+                <!-- Hidden input for the rating -->
+                <input type="hidden" name="rating" id="rating" />
+
+                <!-- Your star rating inputs... -->
+                <div style="width: inherit; display: flex;">
+                    <button type="submit" class="btn login-submit">Внеси коментар</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm"></div>
+</div>
+
+<br/><br/>
+
+
+
+<div class="container">
+    <div class="row">
+        <th:block th:if="${commentsExist}">
+            <div class="col" th:each="comment : ${comments}">
+                <p th:text="${comment.getText()}"></p>
+            </div>
+        </th:block>
     </div>
 </div>
