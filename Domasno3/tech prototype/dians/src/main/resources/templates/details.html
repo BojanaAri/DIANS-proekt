@@ -17,6 +17,32 @@
 
         </div><!-- / column -->
 
+
+
+        <!-- Detail Page Structure -->
+        <style>
+            .gallery-details {
+                margin-top: 20px;
+            }
+
+            .upcoming-events {
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-left: 30px;
+            }
+
+            .upcoming-event-text{
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+
+            }
+        </style>
+
+
         <div class="col-md-5">
             <img id="details-picture"  th:src="${gallery.getImage()}" alt="" >
         </div><!-- / column -->
@@ -68,8 +94,47 @@
         <div class="col-md-5"></div>
     </div>
 
+
+    <div th:if="${upcomingEventText}" class="upcoming-event-text">
+        <!-- Display the upcoming event text -->
+        <p th:text="${upcomingEventText}"></p>
+    </div>
+
+</div>
+
+
+
+
+<div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
+        <div style="width: inherit; height: 58px;">
+            <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
+                <div style="width: inherit; display: flex;">
+                    <textarea name="text" placeholder="Додај коментар..." id="details-text"></textarea>
+                </div>
+                <input type="hidden" name="galleryId" th:value="${gallery.id}" />
+
+                <!-- Hidden input for the rating -->
+                <input type="hidden" name="rating" id="rating" />
+
+                <!-- Your star rating inputs... -->
+                <div style="width: inherit; display: flex;">
+                    <button type="submit" class="btn login-submit">Внеси коментар</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm"></div>
+</div>
+
+<br/><br/>
+
+
+<div class="container">
+
     <br>
     <br>
+
     <div class="row">
         <th:block th:if="${commentsExist}">
             <div class="col" th:each="comment : ${comments}">

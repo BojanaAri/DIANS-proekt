@@ -25,7 +25,7 @@ public class DetailsController {
 
     @GetMapping("/{id}")
 
-    public String getDetailsPage(@PathVariable int id, @RequestParam(required = false) boolean hasUpcomingEvents, Model model) {
+    public String getDetailsPage(@PathVariable long id, @RequestParam(required = false) boolean hasUpcomingEvents, Model model) {
 
         // Your controller logic here
         model.addAttribute("bodyContent", "details");
@@ -59,26 +59,14 @@ public class DetailsController {
 
         return "master-template";
     }
-    private String getUpcomingEventTextForGalleryId(int id) {
-        switch (id) {
+    private String getUpcomingEventTextForGalleryId(long id) {
+        switch ((int)id) {
             case 1:
-                return "Почеток: декември 7 @ 19:30" +
-                        "Крај: јануари 14, 2024 @ 18:00" +
-                        "Cost: MKD100";
+                return "Почеток: декември 7 @ 19:30     Крај: јануари 14, 2024 @ 18:00     Cost: MKD100";
             case 19:
-                return "Почеток:\n" +
-                        "декември 20 @ 12:00\n" +
-                        "Крај:\n" +
-                        "февруари 4, 2024 @ 18:00\n" +
-                        "Cost:\n" +
-                        "MKD100";
+                return "Почеток: декември 20 @ 12:00     Крај: февруари 4, 2024 @ 18:00     Cost: MKD100";
             case 2:
-                return "Почеток:\n" +
-                        "декември 24 @ 19:00\n" +
-                        "Крај:\n" +
-                        "јануари 15 @ 18:00\n" +
-                        "Cost:\n" +
-                        "MKD100";
+                return "Почеток: декември 24 @ 19:00     Крај: јануари 15 @ 18:00     Cost: MKD100";
             default:
                 return "Default upcoming event text";
         }
