@@ -1,6 +1,8 @@
 package com.dians.service.impl;
 
+import com.dians.model.Comment;
 import com.dians.model.Gallery;
+import com.dians.repository.jpa.JpaCommentRepository;
 import com.dians.repository.jpa.JpaGalleryRepository;
 import com.dians.service.GalleryService;
 import org.springframework.stereotype.Service;
@@ -13,9 +15,11 @@ public class GalleryServiceImplementation implements GalleryService {
 
 
     private final JpaGalleryRepository galleryRepository;
+    private final JpaCommentRepository commentRepository;
 
-    public GalleryServiceImplementation(JpaGalleryRepository galleryRepository) {
+    public GalleryServiceImplementation(JpaGalleryRepository galleryRepository, JpaCommentRepository commentRepository) {
         this.galleryRepository = galleryRepository;
+        this.commentRepository = commentRepository;
     }
 
     @Override
@@ -37,4 +41,14 @@ public class GalleryServiceImplementation implements GalleryService {
     @Override
     public Optional<Gallery> getGalleryById(Long id) {
         return galleryRepository.findById(id);
-}}
+}
+
+    @Override
+    public Comment addComment(String text, Long galleryId) {
+        Comment comment = new Comment(text);
+        Gallery gallery = galleryRepository.findById(galleryId)
+                .orElseThrow(() -> new RuntimeException("Gallery not found with id: " +galleryId));
+        comment.setGallery(gallery);
+        return commentRepository.save(comment);
+    }
+}
