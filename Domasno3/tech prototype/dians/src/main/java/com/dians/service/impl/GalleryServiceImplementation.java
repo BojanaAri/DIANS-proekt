@@ -35,13 +35,21 @@ public class GalleryServiceImplementation implements GalleryService {
 
     @Override
     public List<Gallery> search(String text) {
-        return galleryRepository.findAllByCityOrName(text, "");
+        return galleryRepository.findAllByCityOrName(text);
     }
 
     @Override
     public Optional<Gallery> getGalleryById(Long id) {
         return galleryRepository.findById(id);
 }
+
+@Override
+public Boolean searched()
+    {
+        return true;
+    }
+
+
 
     @Override
     public Comment addComment(String text, Long galleryId) {
@@ -52,3 +60,4 @@ public class GalleryServiceImplementation implements GalleryService {
         return commentRepository.save(comment);
     }
 }
+

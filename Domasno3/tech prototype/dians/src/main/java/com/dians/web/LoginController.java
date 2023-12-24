@@ -5,6 +5,9 @@ import com.dians.model.exceptions.InvalidUserCredentialsException;
 import com.dians.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.ResolvableType;
+import org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2ClientConfigurer;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.stereotype.Controller;
@@ -47,10 +50,15 @@ public class LoginController {
             clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
         }
 
+        clientRegistrations.forEach(clientRegistration -> String.format("%s %s %s", clientRegistration.getClientName(), clientRegistration.getRegistrationId(), clientRegistration.getProviderDetails()));
+
         clientRegistrations.forEach(registration ->
                 oauth2AuthenticationUrls.put(registration.getClientName(),
                         authURL + "/" + registration.getRegistrationId()));
         model.addAttribute("urls", oauth2AuthenticationUrls);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
 
         model.addAttribute("bodyContent", "login");
         return "master-template";

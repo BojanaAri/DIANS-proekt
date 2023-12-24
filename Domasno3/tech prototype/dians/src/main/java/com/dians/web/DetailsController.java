@@ -1,5 +1,6 @@
 package com.dians.web;
 import com.dians.model.Comment;
+import com.dians.model.Gallery;
 import com.dians.service.CommentService;
 import com.dians.service.GalleryService;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,9 @@ public class DetailsController {
     }
 
     @GetMapping("/{id}")
+
     public String getDetailsPage(@PathVariable int id, @RequestParam(required = false) boolean hasUpcomingEvents, Model model) {
+
         // Your controller logic here
         model.addAttribute("bodyContent", "details");
         model.addAttribute("galleries", galleryService.listAll());
@@ -31,7 +34,8 @@ public class DetailsController {
 
         // Ensure the id is within a valid range before accessing the list
         if (id >= 0 && id < galleryService.listAll().size()) {
-            model.addAttribute("gallery", galleryService.listAll().get(id));
+            Gallery gallery = galleryService.getGalleryById(id).orElseThrow();
+            model.addAttribute("gallery", gallery);
 
             List<Comment> comments = this.commentService.findAll();
             if (comments != null && !comments.isEmpty()){
@@ -93,6 +97,6 @@ public class DetailsController {
         galleryService.addComment(comment.getText(), galleryId);
 
         // Redirect to the details page for the corresponding gallery
-        return "redirect:/details/" + (galleryId - 1);
+        return "redirect:/details/" + galleryId;
     }
 }
