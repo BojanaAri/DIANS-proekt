@@ -29,9 +29,7 @@ public class MapController {
     public String getMapPage(Model model){
         model.addAttribute("bodyContent", "map");
 
-        List<Gallery> galleryList;
-
-            galleryList = galleryService.listAll();
+        List<Gallery> galleryList = galleryService.listAll();
 
         model.addAttribute("galleries", galleryList);
         return "master-template";
