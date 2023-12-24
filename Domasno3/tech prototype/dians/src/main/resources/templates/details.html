@@ -30,6 +30,15 @@
                 padding: 10px;
                 border-radius: 5px;
                 border: 1px solid #ccc;
+                margin-left: 30px;
+            }
+
+            .upcoming-event-text{
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+
             }
         </style>
 
@@ -76,7 +85,7 @@
         </div>
     </div>
 
-    <div th:if="${upcomingEventText}" class="upcoming-event">
+    <div th:if="${upcomingEventText}" class="upcoming-event-text">
         <!-- Display the upcoming event text -->
         <p th:text="${upcomingEventText}"></p>
     </div>
