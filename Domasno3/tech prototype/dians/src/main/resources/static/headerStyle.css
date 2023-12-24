@@ -25,12 +25,14 @@ nav {
 
 #navbarTogglerDemo02 ul li a
 {
+    transition: 0.3s;
     color: #201261;
     font-weight: bold;
 }
 .form-inline .nav-link{
     padding: 0 15px;
     color: #201261;
+    transition: 0.3s;
 }
 
 
