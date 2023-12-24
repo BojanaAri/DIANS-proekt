@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         if (!password.equals(repeatPassword))
             throw new PasswordDoNotMatchException();
 
-        if (this.userRepository.findByUsernameAndPassword(username,password).isPresent())
+        if (this.userRepository.findByUsername(username).isPresent())
             throw new UsernameAlreadyExistsException(username);
 
         User user = new User(username,
