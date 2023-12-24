@@ -64,6 +64,6 @@ public class DetailsController {
         galleryService.addComment(comment.getText(), galleryId);
 
         // Redirect to the details page for the corresponding gallery
-        return "redirect:/details/" + (galleryId - 1);
+        return "redirect:/details/" + galleryId;
     }
 }
