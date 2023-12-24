@@ -3,6 +3,7 @@ package com.dians.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -31,7 +32,5 @@ public class Comment {
     public Comment() {
     }
 
-    public void setGallery(Gallery gallery) {
 
-    }
 }

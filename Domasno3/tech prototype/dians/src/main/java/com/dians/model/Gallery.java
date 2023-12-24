@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,6 +24,9 @@ public class Gallery {
     @Column(length = 4000)
     String image;
     public Gallery() {}
+
+    @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL)
+    List<Comment> comments;
 
     @JsonCreator
         public Gallery(@JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("name") String name,

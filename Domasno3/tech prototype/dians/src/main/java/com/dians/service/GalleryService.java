@@ -1,5 +1,6 @@
 package com.dians.service;
 
+import com.dians.model.Comment;
 import com.dians.model.Gallery;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface GalleryService {
 
     Optional<Gallery> getGalleryById(Long id);
 
+    Comment addComment(String text, Long galleryId);
 }

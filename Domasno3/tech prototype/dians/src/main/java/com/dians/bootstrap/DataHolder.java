@@ -73,7 +73,7 @@ public class DataHolder {
                     passwordEncoder.encode("admin"),
                     "admin",
                     "admin",
-                    Role.ROLE_USER));
+                    Role.ROLE_ADMIN));
             userRepository.saveAll(users);
         }
 
@@ -82,10 +82,10 @@ public class DataHolder {
             galleryRepository.saveAll(galleries);
         }
 
-        if (commentRepository.count() == 0) {
-            comments.add(new Comment("good"));
-            commentRepository.saveAll(comments);
-        }
+//        if (commentRepository.count() == 0) {
+//
+//            commentRepository.saveAll(comments);
+//        }
     }
 
     private List<Gallery> readJsonFile(String filepath) {
