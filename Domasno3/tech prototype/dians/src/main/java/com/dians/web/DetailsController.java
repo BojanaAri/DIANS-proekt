@@ -36,7 +36,10 @@ public class DetailsController {
             List<Comment> comments = this.commentService.findAll();
             if (comments != null && !comments.isEmpty()){
                 model.addAttribute("commentsExist", true);
-                model.addAttribute("comments", commentService.findAll());
+                model.addAttribute("comments", commentService.getCommentsByGalleryId(id));
+            }
+            else {
+                model.addAttribute("commentsExist", false);
             }
 
         } else {
