@@ -12,5 +12,6 @@ public interface GalleryService {
     List<Gallery> search(String text);
 
     Optional<Gallery> getGalleryById(Long id);
+    Boolean searched();
 
 }

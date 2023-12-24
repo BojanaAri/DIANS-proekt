@@ -1,5 +1,13 @@
-
-<nav class="navbar navbar-expand-lg " xmlns:sec="http://www.w3.org/1999/xhtml">
+<style>
+    .modal-row
+    {
+        border-bottom: 1px gray solid;
+    }
+    .modal-row > td{
+        padding:10px;
+    }
+</style>
+<nav class="navbar navbar-expand-lg " xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <div id="mySidepanel" class="sidepanel" style="margin: 0;text-align: center; height: 800px" sec:authorize="isAuthenticated()">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -15,7 +23,40 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li id="search" >
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <form th:method="POST" th:action="@{/art-galleries}">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                           name="searchText" id="searchText" aria-label="Search" onclick="search(searchText.innerText)">
+                                    <button type="submit" hidden data-toggle="modal" data-target="#myModal" >button</button>
+                    </form>
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        Search results:
+                                        <table>
+                                       <tr class="modal-row"  th:each="gallery: ${galleries}">
+                                           <td><a th:text="${gallery.name}" th:href="@{'/details/{id}' (id=${gallery.getId()})}"></a></td>
+                                            <td th:text="${gallery.city}" />
+                                        </tr>
+                                        </table>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
                 </li>
                 <li class="nav-item active" >
                     <a class="nav-link" href="/art-galleries">ДОМА<span class="sr-only">(current)</span></a>
@@ -47,4 +88,13 @@
     function closeNav() {
         document.getElementById("mySidepanel").style.width = "0";
     }
+    $(document).ready(function () {
+        // Assuming someValue is a boolean variable
+        var showModal = [[${show_search}]]
+
+        if (showModal) {
+            $('#myModal').modal('show');
+        }
+    });
+
 </script>
