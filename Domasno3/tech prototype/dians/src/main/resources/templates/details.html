@@ -15,7 +15,35 @@
             </div><!-- / project-info-box -->
             <!-- / project-info-box -->
 
+
         </div><!-- / column -->
+
+        <!-- Detail Page Structure -->
+        <style>
+            .gallery-details {
+                margin-top: 20px;
+            }
+
+            .upcoming-events {
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+        </style>
+        <div class="container">
+        <div class="gallery-details row">
+            <!-- Gallery Details -->
+            <div class="col">
+
+            <!-- Check for upcoming events and display information using Thymeleaf -->
+            <div th:if="${hasUpcomingEvents}" class="upcoming-events">
+                <!-- Upcoming Events Information -->
+                <p>There are upcoming events in this gallery!</p>
+            </div>
+            </div>
+        </div>
+        </div>
 
         <div class="col-md-7">
             <div id="details-picture">

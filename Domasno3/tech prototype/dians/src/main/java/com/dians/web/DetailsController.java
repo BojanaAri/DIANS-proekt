@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/details")
@@ -17,10 +18,11 @@ public class DetailsController {
     }
 
     @GetMapping("/{id}")
-    public String getDetailsPage(@PathVariable int id, Model model) {
+    public String getDetailsPage(@PathVariable int id, @RequestParam(required = false) String hasUpcomingEvents, Model model) {
         // Your controller logic here
         model.addAttribute("bodyContent", "details");
         model.addAttribute("galleries", galleryService.listAll());
+        model.addAttribute("hasUpcomingEvents" , hasUpcomingEvents);
 
         // Ensure the id is within a valid range before accessing the list
         if (id >= 0 && id < galleryService.listAll().size()) {
@@ -32,4 +34,6 @@ public class DetailsController {
 
         return "master-template";
     }
+
+
 }
