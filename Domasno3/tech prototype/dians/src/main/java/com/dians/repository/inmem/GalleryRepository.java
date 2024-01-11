@@ -7,17 +7,19 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Indicates that the class is a Spring bean representing a repository
 @Repository
 public class GalleryRepository {
-    public List<Gallery> findAll()
-    {
+
+    // Retrieve a list of all galleries from the in-memory data holder
+    public List<Gallery> findAll() {
         return DataHolder.galleries;
     }
 
-    public List<Gallery> search(String text)
-    {
+    // Search for galleries based on a given text (name or address)
+    public List<Gallery> search(String text) {
         return DataHolder.galleries.stream()
-                .filter(g -> g.getName().contains(text) || g.getAddress().contains(text) )
+                .filter(g -> g.getName().contains(text) || g.getAddress().contains(text))
                 .collect(Collectors.toList());
     }
 }
