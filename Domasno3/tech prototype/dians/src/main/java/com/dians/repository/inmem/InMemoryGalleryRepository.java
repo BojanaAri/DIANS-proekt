@@ -9,15 +9,16 @@ import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryGalleryRepository {
-    public List<Gallery> findAll()
-    {
+
+    // Method to retrieve all galleries from the in-memory data holder
+    public List<Gallery> findAll() {
         return DataHolder.galleries;
     }
 
-    public List<Gallery> search(String text)
-    {
+    // Method to search galleries based on a text query
+    public List<Gallery> search(String text) {
         return DataHolder.galleries.stream()
-                .filter(g -> g.getName().contains(text) || g.getAddress().contains(text) )
+                .filter(g -> g.getName().contains(text) || g.getAddress().contains(text))
                 .collect(Collectors.toList());
     }
 }
