@@ -20,18 +20,19 @@ public class WebSecurityConfig {
     private final PasswordEncoder passwordEncoder;
     private final CustomUsernamePasswordAuthenticationProvider authProvider;
 
-
+    // Constructor for dependency injection
     public WebSecurityConfig(PasswordEncoder passwordEncoder, CustomUsernamePasswordAuthenticationProvider authProvider) {
         this.passwordEncoder = passwordEncoder;
         this.authProvider = authProvider;
     }
 
+    // SecurityFilterChain configuration
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests( (requests) -> requests
-                        .requestMatchers("/", "/art-galleries" ,"/assets/**", "/register", "/contact","/map", "/details/**", "/login")
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/", "/art-galleries", "/assets/**", "/register", "/contact", "/map", "/details/**", "/login")
                         .permitAll()
                         .requestMatchers("/images/**").permitAll()
                         .requestMatchers("/**.js", "/**.css", "**.json").permitAll()
@@ -45,7 +46,6 @@ public class WebSecurityConfig {
                         .failureUrl("/login?error=Invalid-Credentials")
                         .defaultSuccessUrl("/profile", true)
                 )
-
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
@@ -66,17 +66,15 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-
-
+    // AuthenticationManager configuration
     @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception{
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
 
+        // Configure the authentication provider
         authenticationManagerBuilder.authenticationProvider(authProvider);
 
         return authenticationManagerBuilder.build();
     }
-
-
 }

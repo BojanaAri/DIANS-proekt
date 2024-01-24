@@ -9,28 +9,30 @@ import java.util.Optional;
 @Repository
 public class InMemoryUserRepository {
 
-    public Optional<User> findByUsername(String username){
+    // Method to find a user by username
+    public Optional<User> findByUsername(String username) {
         return DataHolder.users.stream()
                 .filter(user -> user.getUsername().equals(username))
                 .findFirst();
     }
 
-    public Optional<User> findByUsernameAndPassword(String username, String password){
+    // Method to find a user by username and password
+    public Optional<User> findByUsernameAndPassword(String username, String password) {
         return DataHolder.users.stream()
                 .filter(user -> user.getUsername().equals(username)
                         && user.getPassword().equals(password))
                 .findFirst();
     }
 
-    public User saveOrUpdate(User user)
-    {
+    // Method to save or update a user in the in-memory data holder
+    public User saveOrUpdate(User user) {
         DataHolder.users.removeIf(u -> u.getUsername().equals(user.getUsername()));
         DataHolder.users.add(user);
         return user;
     }
 
-    public void delete(String username){
+    // Method to delete a user from the in-memory data holder by username
+    public void delete(String username) {
         DataHolder.users.removeIf(u -> u.getUsername().equals(username));
     }
-
 }

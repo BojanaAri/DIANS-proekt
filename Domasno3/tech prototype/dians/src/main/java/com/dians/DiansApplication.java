@@ -9,14 +9,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 public class DiansApplication {
 
+    // Main method to start the Spring Boot application
     public static void main(String[] args) {
         SpringApplication.run(DiansApplication.class, args);
     }
 
+    // Bean definition for a PasswordEncoder (BCryptPasswordEncoder)
     @Bean
-    PasswordEncoder passwordEncoder()
-    {
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
-
 }

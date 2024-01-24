@@ -9,28 +9,42 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-import java.util.List;
-
 @Data
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
 public class User implements UserDetails {
 
+    // Primary key, representing the username
     @Id
     private String username;
+
+    // Password of the user
     private String password;
 
+    // Name of the user
     private String name;
+
+    // Surname of the user
     private String surname;
+
+    // Role of the user (e.g., ROLE_USER, ROLE_ADMIN)
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+    // Flags for account status
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
-    private boolean isCredentialsNonExpired =  true;
+    private boolean isCredentialsNonExpired = true;
     private boolean isEnabled = true;
 
+    // Constructors
+
+    // No-args constructor required for JPA
+    public User() {
+    }
+
+    // Parameterized constructor to create a user with basic details
     public User(String username, String password, String name, String surname, Role role) {
         this.username = username;
         this.password = password;
@@ -39,11 +53,15 @@ public class User implements UserDetails {
         this.role = role;
     }
 
+    // UserDetails interface methods
+
+    // Get the authorities (roles) associated with the user
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(role);
     }
 
+    // Methods to check account status
     @Override
     public boolean isAccountNonExpired() {
         return isAccountNonExpired;
@@ -63,5 +81,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
-
 }

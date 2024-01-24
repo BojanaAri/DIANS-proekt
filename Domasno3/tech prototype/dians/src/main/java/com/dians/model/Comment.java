@@ -3,34 +3,32 @@ package com.dians.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Collection;
-import java.util.List;
-
 @Data
 @Entity
 @Table(name = "comments")
 public class Comment {
+    // Primary key for the comment entity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    // Text content of the comment
     String text;
 
-    public Comment(String text) {
-        this.text = text;
-    }
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
+    // Many-to-One relationship with Gallery entity using gallery_id foreign key
     @ManyToOne
     @JoinColumn(name = "gallery_id")
     private Gallery gallery;
 
+    // Constructors
 
-    public Comment() {
+    // Parameterized constructor to create a comment with text
+    public Comment(String text) {
+        this.text = text;
     }
 
-
+    // Default constructor (no-args) required for JPA
+    public Comment() {
+    }
 }
+
