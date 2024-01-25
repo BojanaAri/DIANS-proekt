@@ -25,12 +25,11 @@ public class DetailsController {
 
     @GetMapping("/{id}")
 
-    public String getDetailsPage(@PathVariable long id, @RequestParam(required = false) boolean hasUpcomingEvents, Model model) {
-
+    public String getDetailsPage(@PathVariable long id, Model model) {
         // Your controller logic here
         model.addAttribute("bodyContent", "details");
         model.addAttribute("galleries", galleryService.listAll());
-        model.addAttribute("hasUpcomingEvents" , hasUpcomingEvents);
+
 
         // Ensure the id is within a valid range before accessing the list
         if (id >= 0 && id < galleryService.listAll().size()) {
@@ -51,43 +50,31 @@ public class DetailsController {
             return "redirect:/error";
         }
 
-        if (hasUpcomingEvents) {
-            String upcomingEventText = getUpcomingEventTextForGalleryId(id);
-            model.addAttribute("upcomingEventText", upcomingEventText);
-        }
+        String upcomingEventText = galleryService.getUpcomingEventTextForGalleryId(id);
+        model.addAttribute("upcomingEventText", upcomingEventText);
+
 
 
         return "master-template";
     }
-    private String getUpcomingEventTextForGalleryId(long id) {
-        switch ((int)id) {
-            case 1:
-                return "Почеток: декември 7 @ 19:30     Крај: јануари 14, 2024 @ 18:00     Cost: MKD100";
-            case 19:
-                return "Почеток: декември 20 @ 12:00     Крај: февруари 4, 2024 @ 18:00     Cost: MKD100";
-            case 2:
-                return "Почеток: декември 24 @ 19:00     Крај: јануари 15 @ 18:00     Cost: MKD100";
-            default:
-                return "Default upcoming event text";
-        }
-    }
 
 
-    @PostMapping("/addComment")
-    public String addComment(@ModelAttribute("comment") Comment comment,
-                             @RequestParam("galleryId") Long galleryId,
+    @PostMapping("/{id}")
+    public String addComment(@RequestParam("comment") String comment,
+                             @PathVariable Long id,
+                             @RequestParam String nameUser,
                              Model model) {
         // Validate input parameters
-        if (comment == null || galleryId == null) {
+        if (comment == null || id == null) {
             // Handle invalid input, maybe redirect to an error page
             return "redirect:/error";
         }
 
         // Invoke the service method to add the comment
 //        commentService.addComment(comment.getText(), galleryId);
-        galleryService.addComment(comment.getText(), galleryId);
+        galleryService.addComment(comment, nameUser, id);
 
         // Redirect to the details page for the corresponding gallery
-        return "redirect:/details/" + galleryId;
+        return "redirect:/details/" + id;
     }
 }

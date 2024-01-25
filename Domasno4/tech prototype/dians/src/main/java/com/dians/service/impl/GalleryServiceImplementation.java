@@ -52,12 +52,27 @@ public Boolean searched()
 
 
     @Override
-    public Comment addComment(String text, Long galleryId) {
-        Comment comment = new Comment(text);
+    public Comment addComment(String text, String userName, Long galleryId) {
+        Comment comment = new Comment(text, userName);
         Gallery gallery = galleryRepository.findById(galleryId)
                 .orElseThrow(() -> new RuntimeException("Gallery not found with id: " +galleryId));
         comment.setGallery(gallery);
         return commentRepository.save(comment);
+    }
+
+
+    @Override
+    public String getUpcomingEventTextForGalleryId(long id) {
+        switch ((int)id) {
+            case 1:
+                return "Почеток: декември 7 @ 19:30     Крај: јануари 14, 2024 @ 18:00     Cost: MKD100";
+            case 19:
+                return "Почеток: декември 20 @ 12:00     Крај: февруари 4, 2024 @ 18:00     Cost: MKD100";
+            case 2:
+                return "Почеток: декември 24 @ 19:00     Крај: јануари 15 @ 18:00     Cost: MKD100";
+            default:
+                return "Нема следни настани во наредниот период";
+        }
     }
 }
 

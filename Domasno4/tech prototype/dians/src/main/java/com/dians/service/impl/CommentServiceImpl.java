@@ -20,8 +20,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment addComment(String text, Long galleryId) {
-        Comment comment = new Comment(text);
+    public Comment addComment(String text,String userName, Long galleryId) {
+        Comment comment = new Comment(text,userName);
         Gallery gallery = galleryRepository.findById(galleryId)
                 .orElseThrow(() -> new RuntimeException("Gallery not found with id: " +galleryId));
         comment.setGallery(gallery);

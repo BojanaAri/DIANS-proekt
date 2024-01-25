@@ -41,7 +41,7 @@ public class Gallery {
     String image;
 
     // One-to-Many relationship with Comment entity, mappedBy the "gallery" field in Comment
-    @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Comment> comments;
 
     // Default constructor (no-args) required for JPA
