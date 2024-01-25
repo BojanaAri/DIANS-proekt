@@ -12,11 +12,23 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    String text;
+    String nameOfUser;
+
+    public Comment(String text, String nameOfUser) {
+        this.text = text;
+        this.nameOfUser = nameOfUser;
+    }
+
     // Text content of the comment
     String text;
 
-    // Many-to-One relationship with Gallery entity using gallery_id foreign key
-    @ManyToOne
+
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gallery_id")
     private Gallery gallery;
 
