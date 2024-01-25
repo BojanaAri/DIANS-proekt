@@ -25,7 +25,7 @@ public class Gallery {
     String image;
     public Gallery() {}
 
-    @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gallery", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Comment> comments;
 
     @JsonCreator

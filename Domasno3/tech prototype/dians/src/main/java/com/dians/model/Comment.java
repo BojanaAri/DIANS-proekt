@@ -14,9 +14,11 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String text;
+    String nameOfUser;
 
-    public Comment(String text) {
+    public Comment(String text, String nameOfUser) {
         this.text = text;
+        this.nameOfUser = nameOfUser;
     }
 
 
@@ -24,7 +26,7 @@ public class Comment {
 //    @JoinColumn(name = "user_id")
 //    private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gallery_id")
     private Gallery gallery;
 
