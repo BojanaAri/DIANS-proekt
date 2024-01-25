@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,12 +49,26 @@
 
 </head>
 
-<header th:replace="~{fragments/header}"/>
+<header th:replace="~{fragments/header}">
+</header>
 <body>
 
 
-<section th:insert="${bodyContent}" style="padding-top: 10px;"> </section>
+<section th:insert="${bodyContent}" style="padding-top: 10px;">
+
+
+</section>
 
 
 </body>
 </html>
+
+<script>
+  function closeNav(){
+    document.getElementById("mySidepanel").style.width = "0";}
+
+  function openNav(){
+    document.getElementById('mySidepanel').style.width = '250px';
+
+  }
+</script>
