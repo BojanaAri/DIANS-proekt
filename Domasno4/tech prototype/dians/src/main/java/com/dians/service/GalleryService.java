@@ -15,5 +15,6 @@ public interface GalleryService {
     Optional<Gallery> getGalleryById(Long id);
     Boolean searched();
 
-    Comment addComment(String text, Long galleryId);
+    Comment addComment(String text, String userName, Long galleryId);
+    String getUpcomingEventTextForGalleryId(long id);
 }

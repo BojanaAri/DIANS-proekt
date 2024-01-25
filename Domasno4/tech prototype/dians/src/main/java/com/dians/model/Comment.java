@@ -14,16 +14,17 @@ public class Comment {
 
     // Text content of the comment
     String text;
+    String nameOfUser;
 
     // Many-to-One relationship with Gallery entity using gallery_id foreign key
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gallery_id")
     private Gallery gallery;
 
     // Constructors
 
     // Parameterized constructor to create a comment with text
-    public Comment(String text) {
+    public Comment(String text,  String nameOfUser) {
         this.text = text;
     }
 

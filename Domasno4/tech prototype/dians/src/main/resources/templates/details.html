@@ -12,6 +12,9 @@
                 <p th:text="${gallery.getAddress()} + ', ' + ${gallery.getCity()}" th:style="'margin: 0;'"><b>Address</b></p>
                 <p th:text=" (${gallery.getWorking_hours()} == 'нема' ? 'Работно време: нема' : ${gallery.getWorking_hours()})"></p>
 
+                <p style="font-weight: bold; color: #201261; font-size: larger">Следни настани: </p>
+                <p th:text="${upcomingEventText}" ></p>
+
             </div><!-- / project-info-box -->
             <!-- / project-info-box -->
 
@@ -74,12 +77,11 @@
     <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
         <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
             <div style="width: inherit; height: 58px;">
-                <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
+                <form th:action="@{'/details/{id}' (id=${gallery.id})}" th:method="post">
                     <div style="width: inherit; display: flex;">
-                        <textarea name="text" placeholder="Додај коментар..." id="details-text"></textarea>
+                        <textarea name="comment" placeholder="Додај коментар..." id="details-text"></textarea>
                     </div>
-                    <input type="hidden" name="galleryId" th:value="${gallery.id}" />
-
+                    <input th:value="${#authorization.getAuthentication().name}" name="nameUser" type="hidden"></input>
                     <!-- Hidden input for the rating -->
                     <input type="hidden" name="rating" id="rating" />
 
@@ -96,10 +98,10 @@
     <br/><br/>
 
 
-    <div th:if="${upcomingEventText}" class="upcoming-event-text">
-        <!-- Display the upcoming event text -->
-        <p th:text="${upcomingEventText}"></p>
-    </div>
+<!--    <div th:if="${upcomingEventText}" class="upcoming-event-text">-->
+<!--        &lt;!&ndash; Display the upcoming event text &ndash;&gt;-->
+<!--        <p th:text="${upcomingEventText}"></p>-->
+<!--    </div>-->
 
 </div>
 
@@ -108,20 +110,49 @@
 
 
 
-<div class="container">
+<!--<div class="container">-->
 
-    <br>
-    <br>
+<!--    <br>-->
+<!--    <br>-->
 
-    <div class="row">
-        <th:block th:if="${commentsExist}">
-            <div class="col" th:each="comment : ${comments}">
-                <textarea style="border-color: #915fc6" th:text="${comment.getText()}"></textarea>
+<!--    <div class="row">-->
+<!--        <th:block th:if="${commentsExist}">-->
+<!--            <div class="col" th:each="comment : ${comments}">-->
+<!--                <textarea style="border-color: #915fc6" th:text="${comment.getText()}"></textarea>-->
+<!--            </div>-->
+<!--        </th:block>-->
+<!--    </div>-->
+<!--</div>-->
+
+<br>
+<br>
+<br>
+
+<div class="card" th:if="${commentsExist}" th:each="comment : ${comments}">
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                <p class="text-secondary text-center" >15 Minutes Ago</p>
             </div>
-        </th:block>
+            <div class="col-md-10">
+                <p>
+                    <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html" th:text="${comment.nameOfUser}"></a>
+                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+                </p>
+                <div class="clearfix"></div>
+                <p th:text="${comment.getText()}">Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p>
+                    <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                    <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                </p>
+            </div>
+        </div>
+
     </div>
 </div>
-
-
-
-
