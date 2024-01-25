@@ -1,0 +1,47 @@
+
+<div class="container mx-auto" xmlns:th="http://www.thymeleaf.org" style="width: 318px; text-align: center">
+    <form class="form-signin mt-xl-5 mx-auto" method="post" action="/login">
+
+        <h2 class="form-signin-heading stay-tuned">Останете во тек!</h2>
+        <div class="row" style="padding-bottom: 10px">
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control round" id="username"
+                       name="username" placeholder="Корисничко име" required="">
+            </div>
+
+        </div>
+
+        <div class="row" style="padding-bottom: 10px">
+            <div class="col-sm-10">
+                <input type="password" class="form-control round" id="password"
+                       name="password" placeholder="Лозинка" required="">
+
+            </div>
+        </div>
+
+        <div id="google-link">
+           <p> Најави се со Google: <a href="/oauth2/authorization/google">Кликни овде!</a>
+           </p>
+        </div>
+
+       <a href="/login" style="text-align: center; color: #201261; font-size: 15px">Ја заборавивте лозинката?</a>
+
+
+        <div style="width: 318px; margin-top: 10px">
+            <div style="width: 318px" >
+                <button type="submit" class="btn login-submit">Најави се</button>
+            </div>
+        </div>
+        <br/>
+        <hr style="background: #201261"/>
+
+        <p>Нови сте на <b>ArtWays</b>?
+            <a href="/register" style="color: #201261">Регистрирај се тука!</a>
+        </p>
+
+
+
+    </form>
+
+</div>

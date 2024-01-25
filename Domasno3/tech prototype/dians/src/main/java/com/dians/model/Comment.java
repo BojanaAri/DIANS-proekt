@@ -3,16 +3,15 @@ package com.dians.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Collection;
-import java.util.List;
-
 @Data
 @Entity
 @Table(name = "comments")
 public class Comment {
+    // Primary key for the comment entity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     String text;
     String nameOfUser;
 
@@ -20,6 +19,9 @@ public class Comment {
         this.text = text;
         this.nameOfUser = nameOfUser;
     }
+
+    // Text content of the comment
+    String text;
 
 
 //    @ManyToOne
@@ -30,9 +32,15 @@ public class Comment {
     @JoinColumn(name = "gallery_id")
     private Gallery gallery;
 
+    // Constructors
 
-    public Comment() {
+    // Parameterized constructor to create a comment with text
+    public Comment(String text) {
+        this.text = text;
     }
 
-
+    // Default constructor (no-args) required for JPA
+    public Comment() {
+    }
 }
+

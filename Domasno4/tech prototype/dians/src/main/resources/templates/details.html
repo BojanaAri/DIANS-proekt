@@ -1,0 +1,127 @@
+<div class="container" style="height: 400px;" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <div class="row" >
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h4 th:text="${gallery.getName()}" th:style="'font-weight:bold; color: #201261;'"></h4>
+                <p class="mb-0"></p>
+            </div>
+            <br/>
+            <div class="project-info-box">
+                <p th:text="${gallery.getAddress()} + ', ' + ${gallery.getCity()}" th:style="'margin: 0;'"><b>Address</b></p>
+                <p th:text=" (${gallery.getWorking_hours()} == 'нема' ? 'Работно време: нема' : ${gallery.getWorking_hours()})"></p>
+
+            </div><!-- / project-info-box -->
+            <!-- / project-info-box -->
+
+        </div><!-- / column -->
+
+
+
+        <!-- Detail Page Structure -->
+        <style>
+            .gallery-details {
+                margin-top: 20px;
+            }
+
+            .upcoming-events {
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-left: 30px;
+            }
+
+            .upcoming-event-text{
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+
+            }
+        </style>
+
+
+        <div class="col-md-5">
+            <img id="details-picture"  th:src="${gallery.getImage()}" alt="" >
+        </div><!-- / column -->
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="text"></label>
+
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text"></label>
+
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text"></label>
+
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text"></label>
+
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text"></label>
+
+            </div>
+        </div>
+    </div>
+    <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
+        <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
+            <div style="width: inherit; height: 58px;">
+                <form th:action="@{/details/addComment}" method="post" th:object="${comment}">
+                    <div style="width: inherit; display: flex;">
+                        <textarea name="text" placeholder="Додај коментар..." id="details-text"></textarea>
+                    </div>
+                    <input type="hidden" name="galleryId" th:value="${gallery.id}" />
+
+                    <!-- Hidden input for the rating -->
+                    <input type="hidden" name="rating" id="rating" />
+
+                    <!-- Your star rating inputs... -->
+                    <div style="width: inherit; display: flex;">
+                        <button type="submit" class="btn login-submit">Внеси коментар</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+
+    <br/><br/>
+
+
+    <div th:if="${upcomingEventText}" class="upcoming-event-text">
+        <!-- Display the upcoming event text -->
+        <p th:text="${upcomingEventText}"></p>
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="container">
+
+    <br>
+    <br>
+
+    <div class="row">
+        <th:block th:if="${commentsExist}">
+            <div class="col" th:each="comment : ${comments}">
+                <textarea style="border-color: #915fc6" th:text="${comment.getText()}"></textarea>
+            </div>
+        </th:block>
+    </div>
+</div>
+
+
+
+
