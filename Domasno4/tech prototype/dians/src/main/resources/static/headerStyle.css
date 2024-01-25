@@ -46,6 +46,7 @@ nav {
 }
 
 
+
 .sidepanel  {
     width: 0;
     position: fixed;
@@ -95,7 +96,6 @@ nav {
 .mySidepanel{
     height: 800px;
 }
-
 .nav-link:hover, #navbarTogglerDemo02 ul li a:hover{
     color: #d364ff;
 }
