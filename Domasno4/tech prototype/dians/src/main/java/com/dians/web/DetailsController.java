@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -52,6 +56,8 @@ public class DetailsController {
 
         String upcomingEventText = galleryService.getUpcomingEventTextForGalleryId(id);
         model.addAttribute("upcomingEventText", upcomingEventText);
+
+
 
 
 
