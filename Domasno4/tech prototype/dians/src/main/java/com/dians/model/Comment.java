@@ -19,7 +19,7 @@ public class Comment {
     // Many-to-One relationship with Gallery entity using gallery_id foreign key
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gallery_id")
-    private Gallery gallery;
+    Gallery gallery;
 
     // Constructors
 
