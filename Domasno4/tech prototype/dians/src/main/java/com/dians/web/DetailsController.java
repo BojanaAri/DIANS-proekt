@@ -31,19 +31,16 @@ public class DetailsController {
 
     public String getDetailsPage(@PathVariable long id, Model model) {
         // Your controller logic here
-        model.addAttribute("bodyContent", "details");
-        model.addAttribute("galleries", galleryService.listAll());
-
 
         // Ensure the id is within a valid range before accessing the list
         if (id >= 0 && id < galleryService.listAll().size()) {
             Gallery gallery = galleryService.getGalleryById(id).orElseThrow();
             model.addAttribute("gallery", gallery);
 
-            List<Comment> comments = this.commentService.findAll();
+            List<Comment> comments = commentService.getCommentsByGalleryId(id);
             if (comments != null && !comments.isEmpty()){
                 model.addAttribute("commentsExist", true);
-                model.addAttribute("comments", commentService.getCommentsByGalleryId(id));
+                model.addAttribute("comments", comments);
             }
             else {
                 model.addAttribute("commentsExist", false);
@@ -57,30 +54,10 @@ public class DetailsController {
         String upcomingEventText = galleryService.getUpcomingEventTextForGalleryId(id);
         model.addAttribute("upcomingEventText", upcomingEventText);
 
-
-
-
-
+        model.addAttribute("bodyContent", "details");
         return "master-template";
     }
 
 
-    @PostMapping("/{id}")
-    public String addComment(@RequestParam("comment") String comment,
-                             @PathVariable Long id,
-                             @RequestParam String nameUser,
-                             Model model) {
-        // Validate input parameters
-        if (comment == null || id == null) {
-            // Handle invalid input, maybe redirect to an error page
-            return "redirect:/error";
-        }
 
-        // Invoke the service method to add the comment
-//        commentService.addComment(comment.getText(), galleryId);
-        galleryService.addComment(comment, nameUser, id);
-
-        // Redirect to the details page for the corresponding gallery
-        return "redirect:/details/" + id;
-    }
 }

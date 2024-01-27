@@ -53,8 +53,8 @@
 
     </div>
 
-    <div class="row">
-        <div class="col-md-7">
+    <div class="row" >
+        <div class="col-md-7" style="margin: auto">
             <div class="rate">
                 <input type="radio" id="star5" name="rate" value="5" />
                 <label for="star5" title="text"></label>
@@ -74,21 +74,21 @@
             </div>
         </div>
     </div>
-    <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml">
-        <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()">
-            <div style="width: inherit; height: 58px;">
-                <form th:action="@{'/details/{id}' (id=${gallery.id})}" th:method="post">
-                    <div style="width: inherit; display: flex;">
-                        <textarea name="comment" placeholder="Додај коментар..." id="details-text"></textarea>
-                    </div>
-                    <input th:value="${#authorization.getAuthentication().name}" name="nameUser" type="hidden"></input>
+    <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml"  >
+        <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()" >
+            <div style="width: inherit; height: 58px; margin: auto" >
+                <form th:action="@{'/comments/{id}' (id=${gallery.id})}" th:method="post">
+                    <div class="row">
+                        <div style="width: inherit; display: flex;">
+                            <textarea name="comment" placeholder="Додај коментар..." id="details-text" style="display: inline-block; width: 350px; margin-right: 15px"></textarea>
+                        </div>
+                        <input th:value="${#authorization.getAuthentication().name}" name="nameUser" type="hidden"></input>
+                        <input type="hidden" name="rating" id="rating" />
 
-                    <!-- Hidden input for the rating -->
-                    <input type="hidden" name="rating" id="rating" />
-
-                    <!-- Your star rating inputs... -->
-                    <div style="width: inherit; display: flex;">
-                        <button type="submit" class="btn login-submit">Внеси коментар</button>
+                        <!-- Your star rating inputs... -->
+                        <div style="width: inherit; display: flex;">
+                            <button type="submit" class="btn login-submit">Внеси коментар</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -102,41 +102,23 @@
 </div>
 
 
-
-<!--<div class="container">-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <h4>Comments:</h4>-->
-
-<!--    <div class="row">-->
-
-<!--        <th:block th:if="${commentsExist}">-->
-<!--            <div class="col" th:each="comment : ${comments}">-->
-<!--                <p style="border-color: #915fc6" th:text="${comment.getText()}"></p>-->
-<!--            </div>-->
-<!--        </th:block>-->
-<!--    </div>-->
-<!--</div>-->
 <br>
 <br>
 <br>
 
-<div class="container">
-    <div class="card" th:if="${commentsExist}" th:each="comment : ${comments}" style="width: 40%">
+<div class="container" >
+    <div class="card" th:if="${commentsExist}" th:each="comment : ${comments}" style="width: 50%;margin: auto">
 
-        <div class="card-body">
-            <div class="row">
+        <div class="card-body" >
+            <div class="row justify-content-center" >
+
+
                 <div class="col-md-2">
                     <img src="../images/avatar.png" class="img img-rounded img-fluid"/>
-<!--                    <p class="text-secondary text-center" >15 Minutes Ago</p>-->
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-10" >
                     <p>
-                        <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html" th:text="${comment.nameOfUser}" style="font-size: large"></a>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html" th:text="${comment.nameOfUser}" style="font-size: large; color: #915fc6"></a>
                         <span class="float-right"><i class="text-warning fa fa-star"></i></span>
 
                     </p>
@@ -148,7 +130,7 @@
 <!--                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>-->
                     </p>
                 </div>
-            </div>
+             </div>
 
         </div>
     </div>
