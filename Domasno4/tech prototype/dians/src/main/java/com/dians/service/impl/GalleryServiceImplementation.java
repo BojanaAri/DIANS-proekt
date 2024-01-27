@@ -43,24 +43,6 @@ public class GalleryServiceImplementation implements GalleryService {
         return galleryRepository.findById(id);
 }
 
-@Override
-public Boolean searched()
-    {
-        return true;
-    }
-
-
-
-    @Override
-    public Comment addComment(String text, String userName, Long galleryId) {
-        Comment comment = new Comment(text, userName);
-        Gallery gallery = galleryRepository.findById(galleryId)
-                .orElseThrow(() -> new RuntimeException("Gallery not found with id: " +galleryId));
-        comment.setGallery(gallery);
-        return commentRepository.save(comment);
-    }
-
-
     @Override
     public String getUpcomingEventTextForGalleryId(long id) {
         switch ((int)id) {
