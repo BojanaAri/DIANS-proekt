@@ -38,7 +38,7 @@ public class MapController {
     public String search(@RequestParam String searchText, Model model)
     {
         model.addAttribute("bodyContent", "map");
-     model.addAttribute("galleries", galleryService.searchByCity(searchText));
-     return "master-template";
+        model.addAttribute("galleries", galleryService.searchByCity(searchText));
+     return "redirect:/map";
     }
 }

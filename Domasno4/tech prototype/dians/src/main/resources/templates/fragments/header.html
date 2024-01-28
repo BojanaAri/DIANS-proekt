@@ -16,13 +16,10 @@
         <img src="/images/avatar.png" style="height: 150px; width: 150px" alt="">
         <p></p>
         <a href="/profile">Профил</a>
-        <a href="/login">Најави се</a>
         <a href="/logout">Одјави се</a>
     </div>
 
     <a class="navbar-brand openbtn" onclick="openNav()"></a>
-
-
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -80,28 +77,26 @@
                 <a class="nav-item nav-link"   href="/profile"  id="user-profile" sec:authorize="isAuthenticated()" ></a>
 
 <!--                <p sec:authorize="isAuthenticated()"  th:text="#strings.isNumeric(#authentication.name) ? ${#authentication.getPrincipal().getEmail()} : ${#authentication.getName()}" ></p>-->
-                <a class="nav-item nav-link"   href="/profile" sec:authorize="isAuthenticated()" th:text="${#authentication.name}"></a>
+<!--                <a class="nav-item nav-link"  href="/profile" sec:authorize="isAuthenticated()" th:text="${#authentication.name}"></a>-->
+
+<!--                <p th:if="${#strings.matches('[0-9]{3,30}')}">Guest</p>-->
+<!--                <p th:unless="${#strings.matches('[0-9]{3,30}')}"  th:text="${#authentication.name}"></p>-->
+
+                <a sec:authorize="isAuthenticated()" class="nav-item nav-link"  href="/profile" th:if="${#authorization.getAuthentication().name.startsWith('1')}" th:text="${#authentication.getPrincipal().getEmail()}">GUEST</a>
+                <a sec:authorize="isAuthenticated()" class="nav-item nav-link"  href="/profile" th:unless="${#authorization.getAuthentication().name.startsWith('1')}" th:text="${#authentication.name}"></a>
+
                 <a class="nav-item nav-link"   href="/logout" sec:authorize="isAuthenticated()">Одјави се</a>
                 <a class="nav-item nav-link"   href="#">MK | EN</a>
             </form>
         </div>
 </nav>
-
 <script>
-    function openNav() {
-        document.getElementById("mySidepanel").style.width = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidepanel").style.width = "0";
-    }
     $(document).ready(function () {
-        // Assuming someValue is a boolean variable
-        var showModal = [[${show_search}]]
+    // Assuming someValue is a boolean variable
+    var showModal = [[${show_search}]]
 
-        if (showModal) {
-            $('#myModal').modal('show');
-        }
+    if (showModal) {
+    $('#myModal').modal('show');
+    }
     });
-
 </script>
