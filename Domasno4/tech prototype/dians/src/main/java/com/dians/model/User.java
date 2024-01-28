@@ -41,8 +41,6 @@ public class User implements UserDetails {
     // Constructors
 
     // No-args constructor required for JPA
-    public User() {
-    }
 
     // Parameterized constructor to create a user with basic details
     public User(String username, String password, String name, String surname, Role role) {

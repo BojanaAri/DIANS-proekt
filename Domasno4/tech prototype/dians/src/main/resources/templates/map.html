@@ -1,28 +1,13 @@
-
-<style>
-  .title-main-page
-  {
-    font-style: italic;
-    color: #201261;
-    padding-left: 15%;
-    margin-top:10px;
-    margin-bottom: 10px;
-  }
-  .button-pink
-  {
-      color: white;
-      margin-left: 5px;
-      background-color: #915fc6;
-  }
-  .button-pink:hover{
-      background-color: #c4a9e0
-  }
-</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<link rel="stylesheet" th:href="@{/style.css}"/>
+<!--<script type="module" th:src="@{/index.js}"></script>-->
 <div xmlns:th="http://www.thymeleaf.org">
   <div class="title-main-page">
 <h2 >Истражи ги галериите по град:</h2>
 
-  <form class="form-inline" th:method="POST" th:action="@{/map}">
+  <form class="form-inline">
     <div class="form-group mb-2">
       <input type="text" class="form-control" id="searchText" name="searchText" >
     </div>
@@ -31,47 +16,286 @@
  </div>
 
   <div class="container">
-  <div id="osm-map" style="min-height: 450px;height: 450px; width: 1100px;"></div>
+      <div id="map"></div>
 </div>
 </div>
 <script th:inline="javascript">
-  var list = [[${galleries}]];
-  console.log(list);
-  // open streetmap integration with leaflet
-  $(function(){
-    "use strict";
-// osm-map the id of div area where map should be shown
-    var element = document.getElementById('osm-map');
+    var map = L.map('map').setView([41.6086, 21.7453], 13);
 
-// lat & long of center of map and marker
-    var lat = '41.9945';
-    var long =  '21.4319';
-
-
-
-// Create Leaflet map on map element.
-    var map = L.map(element, {scrollWheelZoom: false });
-
-// Add Openstreetmap tile layer with attribution to the Leaflet map.
-// this is important and worth to honor openstreetmap contributors
-    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 15,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-// Your target's GPS coordinates.
-    var target = L.latLng( lat , long );
+    navigator.geolocation.watchPosition(success,error);
 
-// Set map's center to target with zoom 15.
-    map.setView(target, 15);
+    function success(pos){
 
-// Place a marker on the same location.
+        const lat= pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const accuracy = pos.coords.accuracy;
+
+        let marker = L.marker([lat, lng]).addTo(map);
+        let circle = L.circle([lat, lng], {radius: accuracy}).addTo(map);
+
+        map.fitBounds(circle.getBounds())
+
+    }
+
+    function error(err){
+        if(err.code === 1) {
+            alert("Please allow geolocation access");
+        }
+        else{
+            alert("Cannot get current location");
+        }
+    }
+
+    list = [
+        {
+            "lon": "41.99131",
+            "lat": "21.424855",
+            "name": "Национална галерија на Република Северна Македонија-Мала станица",
+            "city": "Скопје",
+            "address": "Адреса: Јордан Мијалков (Железничка) 18",
+            "website": "http://www.nationalgallery.mk",
+            "working_hours": "Работно време: Вто - Нед од 10:00 до 21:00",
+            "image": "https://nationalgallery.mk/wp-content/uploads/2018/01/muzej3.jpg"
+        },
+        {
+            "lon": "41.9806272",
+            "lat": "21.4407704",
+            "name": "Импресија",
+            "city": "Скопје",
+            "address": "Адреса: Тодор Паница 7 лок.6",
+            "website": "нема",
+            "working_hours": "Работно време: Пон - Пет од 12:00 до 20:00 • Саб од 10:00 до 15:00",
+            "image": "https://scontent.fskp4-1.fna.fbcdn.net/v/t39.30808-6/406328590_734871091999195_82589391944554543_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=5GVhNHtg1RcAX_gy3K6&_nc_ht=scontent.fskp4-1.fna&oh=00_AfB_RfCKfaC_1ErAez-s1Hq8pYWRFebJQ6PrlcZYgoClNA&oe=65884AA4"
+        },
+        {
+            "lon": "41.9933363966",
+            "lat": "21.4354205131",
+            "name": "Културно Информативен Центар (КИЦ)",
+            "city": "Скопје",
+            "address": "Адреса: Филип Втори Македонски (Моша Пијаде) б.б.",
+            "website": "http://www.kic.mk/",
+            "working_hours": "Работно време: Пон - Пет од 08:00 до 20:00",
+            "image": "https://lh3.googleusercontent.com/p/AF1QipNbMv94RK2mcoZ4SrpHzh6N2uKX59YzWQF0qv8W=s1360-w1360-h1020"
+        },
+        {
+            "lon": "41.9884974843",
+            "lat": "21.4515655595",
+            "name": "Касвер-Ц",
+            "city": "Скопје",
+            "address": "Адреса: бул.К.Ј.Питу, ТЦ Скопјанка 19 лок.53",
+            "website": "http://www.kasver.mk",
+            "working_hours": "Работно време: Пон - Пет од 09:00 до 17:00 • Саб од 09:00 до 13:30",
+            "image": "https://scontent.fskp4-2.fna.fbcdn.net/v/t1.6435-9/65882740_2433088046926646_8542466325681799168_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=dd63ad&_nc_ohc=I06IUcElzQwAX8dKen5&_nc_ht=scontent.fskp4-2.fna&oh=00_AfBlBfxD-FViMz89fRWehrWQpLuRVK2t-Pmvv8_a_2TDig&oe=65ABC0D1"
+        },
+        {
+            "lon": "41.9932824696",
+            "lat": "21.4251890331",
+            "name": "Галерија Мартин",
+            "city": "Скопје",
+            "address": "Адреса: Св.Кирил и Методиј (М.Х.Јасмин) 52-б лок.5",
+            "website": "http://www.gallerymartin.com.mk",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-2.fna.fbcdn.net/v/t1.6435-9/46488477_1948434215252746_7441252134214959104_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=dd63ad&_nc_ohc=LvaS_-q-7AYAX_mCtg1&_nc_ht=scontent.fskp4-2.fna&oh=00_AfBDv2giKIVbAS2Vjy8BiNhjynvTch2TZjW3v6uhhqrUXw&oe=65ABD0A7"
+        },
+        {
+            "lon": "41.1143908933",
+            "lat": "20.7999853665",
+            "name": "Букефал",
+            "city": "Охрид",
+            "address": "Адреса: Св.Климент Охридски 54",
+            "website": "http://www.bukefal.com.mk",
+            "working_hours": "Работно време: Пон - Нед од 10:00 до 22:00",
+            "image": "https://lh3.googleusercontent.com/p/AF1QipMu-iPksSuViLOs-lAqYaHTmXVD5RBgrpnZYlFV=s1360-w1360-h1020"
+        },
+        {
+            "lon": "41.998139",
+            "lat": "21.424253",
+            "name": "Рипида",
+            "city": "Скопје",
+            "address": "Адреса: бул.Партизански Одреди, Порта Буњаковец 19",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-2.fna.fbcdn.net/v/t39.30808-6/307569473_461557439345378_6907090241457137469_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=GvtrE1p6iWsAX-3Of6I&_nc_ht=scontent.fskp4-2.fna&oh=00_AfBzQIWaisxhFlV8ivTXPfua4ng1TCK3gYjnmMxVXMy6YQ&oe=658A108A"
+        },
+        {
+            "lon": "41.9968029612",
+            "lat": "21.4255928994",
+            "name": "Грал Галерија",
+            "city": "Скопје",
+            "address": "Адреса: бул.Св.Климент Охридски 45 лок.6",
+            "website": "http://www.gral.com.mk",
+            "working_hours": "Работно време: Пон - Пет од 09:00 до 15:00",
+            "image": "https://scontent.fskp4-1.fna.fbcdn.net/v/t39.30808-6/304915408_930054321244658_1318809746440074634_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=783fdb&_nc_ohc=mrXTC2EIGUUAX8HBeik&_nc_ht=scontent.fskp4-1.fna&oh=00_AfBypUl9Wm93-9WhTIT0pzDsKZcuYGnmqJYqybbxFxssIg&oe=6589C730"
+        },
+        {
+            "lon": "41.1096776732",
+            "lat": "20.8052292538",
+            "name": "Ателиер Анастас Дудан",
+            "city": "Охрид",
+            "address": "Адреса: Јане Сандански 14",
+            "website": "http://www.anastasdudan.com.mk",
+            "working_hours": "Работно време: Пон - Нед од 11:00 до 20:00",
+            "image": "https://www.anastasdudan.com.mk/upload/slide/0.jpg"
+        },
+        {
+            "lon": "41.989724",
+            "lat": "21.460936",
+            "name": "Саздовски",
+            "city": "Скопје",
+            "address": "Адреса: Народен Фронт 5",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-1.fna.fbcdn.net/v/t1.18169-9/18010969_645189725665884_263826075332487983_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=c2f564&_nc_ohc=P6CjsIy78PoAX-2c9R5&_nc_oc=AQlE-my4wnt568UtByhGGM7tRk3JctEyFeTXXuCsIG_0VmOCe-eBT4nLtelgkIfe8-s&_nc_ht=scontent.fskp4-1.fna&oh=00_AfBhEYqTxGJVJZwwOFOgMEfxUbD-XIDFOyV2DLhblHbPZg&oe=65ABD20E"
+        },
+        {
+            "lon": "41.996061",
+            "lat": "21.42879",
+            "name": "Ел Греко",
+            "city": "Скопје",
+            "address": "Адреса: Максим Горки 17",
+            "website": "нема",
+            "working_hours": "Работно време: Пон - Пет од 10:30 до 21:00",
+            "image": "https://scontent.fskp4-1.fna.fbcdn.net/v/t39.30808-6/278134221_397917382336976_549871120681417680_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=R7MqyBDhKRkAX8tT4An&_nc_ht=scontent.fskp4-1.fna&oh=00_AfC8yEHEAXPnwMf6XhlcxXYL7az0ea_HbaOz-lK1oiF6iw&oe=6589754E"
+        },
+        {
+            "lon": "41.988505",
+            "lat": "21.449978",
+            "name": "Сликарско студио Качев",
+            "city": "Скопје",
+            "address": "Адреса: бул.К.Ј.Питу 28/3, поткровје",
+            "website": "http://www.konstantinkacev.com",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-1.fna.fbcdn.net/v/t39.30808-6/348283586_163025123179459_1991873335811324695_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a73e89&_nc_ohc=Vy4-X0na0EYAX9-CaWK&_nc_ht=scontent.fskp4-1.fna&oh=00_AfB51TgYcy7WuWctBv1yOV-_HSfl0PvpshjpxBqpcb8FGQ&oe=6588C4F7"
+        },
+        {
+            "lon": "41.1161394212",
+            "lat": "20.800112529",
+            "name": "Коппер-арт",
+            "city": "Охрид",
+            "address": "Адреса: Гоце Делчев 4",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://rzkohrid.mk/wp-content/gallery/d0bad0bed0bfd0bfd0b5d180-d0b0d180d182/0-02-05-019060ae781a06181ece3c62c4cab1ae6462a157d919bb3f57bbb8247f4dec2a_ba2b0c4f.jpg"
+        },
+        {
+            "lon": "41.99664",
+            "lat": "21.428949",
+            "name": "Остен",
+            "city": "Скопје",
+            "address": "Адреса: 8-ма Ударна Бригада 2",
+            "website": "http://www.osten.com.mk",
+            "working_hours": "Работно време: Пон - Пет од 09:00 до 17:00",
+            "image":"https://lh3.googleusercontent.com/p/AF1QipPZNn5VVm-20sJMHpReQee1dBw8gAjBxM2p-3GY=s1360-w1360-h1020"
+
+        },
+        {
+            "lon": "41.9947700092",
+            "lat": "21.4213029915",
+            "name": "Арте галерија",
+            "city": "Скопје",
+            "address": "Адреса: М.Т.Гологанов (Иво Лола Рибар) 49",
+            "website": "нема",
+            "working_hours": "Работно време: Пон - Пет од 10:00 до 20:00 • Саб од 10:00 до 15:00",
+            "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/ee/36/c9/arte-galerija.jpg?w=1200&h=-1&s=1"
+        },
+        {
+            "lon": "42.0107875596",
+            "lat": "21.4058127187",
+            "name": "Галерија Мартиноски",
+            "city": "Скопје",
+            "address": "Адреса: бул.8-ми Септември (Октомвриска револуција) 15",
+            "website": "нема",
+            "working_hours": "Работно време: Пон - Пет од 12:00 до 19:00",
+            "image": "https://scontent.fskp4-2.fna.fbcdn.net/v/t1.18169-9/17991121_810707389105952_5840610056936638171_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=4dc865&_nc_ohc=z1UXvm31s-wAX_yZRxp&_nc_ht=scontent.fskp4-2.fna&oh=00_AfAR_bxXh487-vOcg13wfIJ8eE1-pAdGvijfHpkQZetRHg&oe=65ABD81C"
+        },
+        {
+            "lon": "41.3694803334",
+            "lat": "21.2492339188",
+            "name": "Галерија на икони",
+            "city": "Крушево",
+            "address": "Адреса: Никола Ѓурковиќ б.б.",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://muzejohrid.mk/wp-content/uploads/2023/01/Galerija-na-ikoni-Ohrid-1024x373.jpg"
+        },
+        {
+            "lon": "41.3695205913",
+            "lat": "21.2511597449",
+            "name": "Никола Мартиноски",
+            "city": "Крушево",
+            "address": "Адреса: Нико Доага б.б.",
+            "website": "нема",
+            "working_hours": "Работно време: Пон - Нед од 09:00 до 16:00",
+            "image": "https://krusevokrusevo.weebly.com/uploads/8/1/3/9/8139351/601960969.jpg?304"
+        },
+        {
+            "lon": "41.9850350109",
+            "lat": "21.4657992125",
+            "name": "Арт Студио Реализам",
+            "city": "Скопје",
+            "address": "Адреса: бул.Јане Сандански 82",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-2.fna.fbcdn.net/v/t39.30808-6/292646037_383510527103179_6969171916533244973_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=t2kAAD3U4t0AX9uJhGc&_nc_ht=scontent.fskp4-2.fna&oh=00_AfB-E4hlFT3KVhGbcdWUwd50u1nVwnhJaC4CwuDWHge0Eg&oe=6589437B"
+        },
+        {
+            "lon": "41.0285682659",
+            "lat": "21.3388613317",
+            "name": "Галерија и Концепт Стор Солак",
+            "city": "Битола",
+            "address": "Адреса: Димитар Илиевски Мурато(Борис Кидриќ) 24",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-2.fna.fbcdn.net/v/t39.30808-6/305565443_124237010371998_1897109955342451524_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=783fdb&_nc_ohc=h11KPbOkvTwAX9WuIvS&_nc_oc=AQmzuOfA8OlGExhzZ2ud66KCzkEmMttT__mX3z7ozNvwT-0wE9a8ItHXKjRe8oNc51o&_nc_ht=scontent.fskp4-2.fna&oh=00_AfDcxOgaqXMdo-rXWhOl6AS5nFY-0uI_oCcaHGQQlTsdxw&oe=6589CE4F"
+        },
+        {
+            "lon": "нема",
+            "lat": "нема",
+            "name": "Арт Шаби Чик",
+            "city": "Кочани",
+            "address": "Адреса: Маршал Тито 6",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-1.fna.fbcdn.net/v/t39.30808-6/314695266_568734801878181_5003422183287542044_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=783fdb&_nc_ohc=8bH5uSVEbW4AX8JPpbq&_nc_ht=scontent.fskp4-1.fna&oh=00_AfAZys0V0OCspdODhSQZSxI09kaBZszAC09FrVgCSQXY4Q&oe=658892AD"
+        },
+        {
+            "lon": "нема",
+            "lat": "нема",
+            "name": "Анарт",
+            "city": "Скопје",
+            "address": "Адреса: М.Т.Гологанов (Иво Лола Рибар) 70-б",
+            "website": "http://anamitevska.com/contact/",
+            "working_hours": "нема",
+            "image": "https://lh3.googleusercontent.com/p/AF1QipPAZqU0U1gO2k_iBCHD8mpSReQtwrwvagXYWmM_=s1360-w1360-h1020"
+        },
+        {
+            "lon": "41.9224370691",
+            "lat": "22.4463748707",
+            "name": "Одоната",
+            "city": "Кочани",
+            "address": "Адреса: Стојан Момчилов, с Оризари 11-а",
+            "website": "нема",
+            "working_hours": "нема",
+            "image": "https://scontent.fskp4-1.fna.fbcdn.net/v/t39.30808-6/339076185_773112450991765_3614572935157181900_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=3635dc&_nc_ohc=_6RPhocZIJIAX94DJ9M&_nc_ht=scontent.fskp4-1.fna&oh=00_AfBAOAQLB303XQMEH1T1SsH9G9BIt98A8AmobDdk_2oTXw&oe=6589E04F"
+        }
+    ]
+
+    console.log(list)
+
     for(let i = 0; i < list.length; i++) {
-      var marker = L.marker([list[i]['lon'], list[i]['lat']]).addTo(map);
+        if(document.getElementById("searchText").innerText!="" )
+        var marker = L.marker([list[i]['lon'], list[i]['lat']]).addTo(map);
 
-      marker.onclick = "location.href='.html"
+        marker.onclick = "location.href='.html"
 
-      marker.bindPopup(`
-                    <div onclick="window.location='/details/' + ${list[i]['id']}">
+        num = i+1
+        marker.bindPopup(`
+                    <div onclick="window.location='/details/' + ${i+1}">
                     <b>Галерија: ${list[i]['name']}</b>
                     <br>
                     <b>${list[i]['address']}</b>
@@ -80,14 +304,7 @@
                     <br>
                     </div>
                     `)
-              .openPopup();
+            .openPopup();
 
     }
-
-// Optional, but useful: change behaviour of autoscrollwheel
-// only zoom after click, no autozoom on focus
-    map.scrollWheelZoom.disable();
-    map.on('click', () => { map.scrollWheelZoom.enable();});
-    map.on('mouseout', () => { map.scrollWheelZoom.disable();});
-  });
 </script>

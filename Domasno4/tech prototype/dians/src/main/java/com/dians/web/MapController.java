@@ -2,18 +2,18 @@ package com.dians.web;
 
 
 import com.dians.model.Gallery;
-import com.dians.repository.jpa.JpaGalleryRepository;
 import com.dians.service.GalleryService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nimbusds.jose.shaded.gson.Gson;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 @Controller
 @RequestMapping("/map")
@@ -24,21 +24,15 @@ public class MapController {
         this.galleryService = galleryService;
     }
 
-
     @GetMapping()
-    public String getMapPage(Model model){
+    public String getMapPage(Model model) {
         model.addAttribute("bodyContent", "map");
 
         List<Gallery> galleryList = galleryService.listAll();
 
         model.addAttribute("galleries", galleryList);
+        model.addAttribute("show_search", false);
+
         return "master-template";
-    }
-    @PostMapping()
-    public String search(@RequestParam String searchText, Model model)
-    {
-        model.addAttribute("bodyContent", "map");
-     model.addAttribute("galleries", galleryService.searchByCity(searchText));
-     return "master-template";
     }
 }

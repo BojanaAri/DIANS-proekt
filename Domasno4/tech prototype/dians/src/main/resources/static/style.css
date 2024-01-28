@@ -1,0 +1,25 @@
+.title-main-page
+{
+    font-style: italic;
+    color: #201261;
+    padding-left: 15%;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.button-pink
+{
+    color: white;
+    margin-left: 5px;
+    background-color: #915fc6;
+}
+.button-pink:hover{
+    background-color: #c4a9e0
+}
+/*
+* Always set the map height explicitly to define the size of the div element
+* that contains the map.
+*/
+#map {
+    height: 400px;
+    width: 100%;
+}
