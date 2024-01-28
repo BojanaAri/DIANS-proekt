@@ -1,0 +1,31 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: Gallery-Service
+          uri: lb://Gallery-Service
+          predicates:
+            - Path=/galleries/**
+        - id: Comment-Service
+          uri: lb://Comment-Service
+          predicates:
+            - Path=/comments/**
+        - id: User-Service
+          uri: lb://User-Service
+          predicates:
+            - Path=/users/**
+
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:111/eureka/
+
