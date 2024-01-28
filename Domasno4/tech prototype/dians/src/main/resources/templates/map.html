@@ -1,6 +1,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 <link rel="stylesheet" th:href="@{/style.css}"/>
 <!--<script type="module" th:src="@{/index.js}"></script>-->
 <div xmlns:th="http://www.thymeleaf.org">
@@ -11,7 +12,7 @@
     <div class="form-group mb-2">
       <input type="text" class="form-control" id="searchText" name="searchText" >
     </div>
-    <button type="submit" class="btn button-pink mb-2">ПРЕБАРАЈ</button>
+    <button id="searchButton" class="btn button-pink mb-2">ПРЕБАРАЈ</button>
   </form>
  </div>
 
@@ -20,23 +21,25 @@
 </div>
 </div>
 <script th:inline="javascript">
-    var map = L.map('map').setView([41.6086, 21.7453], 13);
+    var map = L.map('map').setView([41.6086, 21.7453], 10);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 15,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    let currentLat;
+    let currentLng;
     navigator.geolocation.watchPosition(success,error);
 
     function success(pos){
 
-        const lat= pos.coords.latitude;
-        const lng = pos.coords.longitude;
+        currentLat = pos.coords.latitude;
+        currentLng = pos.coords.longitude;
         const accuracy = pos.coords.accuracy;
 
-        let marker = L.marker([lat, lng]).addTo(map);
-        let circle = L.circle([lat, lng], {radius: accuracy}).addTo(map);
+        let marker = L.marker([currentLat, currentLng]).addTo(map);
+        let circle = L.circle([currentLat, currentLng], {radius: accuracy}).addTo(map);
 
         map.fitBounds(circle.getBounds())
 
@@ -285,15 +288,37 @@
         }
     ]
 
-    console.log(list)
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
+    // usage for searchText
+    var searchTextValue = getParameterByName('searchText');
+    if (searchTextValue !== "" && searchTextValue !== null)
+        searchTextValue = searchTextValue.toLowerCase();
+
+    console.log(searchTextValue);
+    var flag = 1
     for(let i = 0; i < list.length; i++) {
-        if(document.getElementById("searchText").innerText!="" )
+        if (searchTextValue !== "" && searchTextValue !== null) {
+            var city = list[i]['city'].toLowerCase()
+            if(flag===1)
+                map.setView([list[i]['lat'],list[i]['lon']], 10);
+
+            if(city !== searchTextValue)
+                continue
+        }
+
         var marker = L.marker([list[i]['lon'], list[i]['lat']]).addTo(map);
 
         marker.onclick = "location.href='.html"
 
-        num = i+1
         marker.bindPopup(`
                     <div onclick="window.location='/details/' + ${i+1}">
                     <b>Галерија: ${list[i]['name']}</b>
@@ -303,8 +328,22 @@
                      ${(list[i]['working_hours'])}
                     <br>
                     </div>
+                    <button onclick="addRouting(${list[i]['lon']}, ${list[i]['lat']})">Насоки?</button>
                     `)
             .openPopup();
 
+
     }
+    function addRouting(lon, lat)
+    {
+        L.Routing.control({
+            waypoints: [
+                L.latLng(currentLat, currentLng ),
+                L.latLng(lon, lat)
+            ]
+        }).addTo(map);
+    }
+
+
+
 </script>
