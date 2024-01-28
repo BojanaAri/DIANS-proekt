@@ -50,6 +50,10 @@ public class User implements UserDetails {
         this.role = role;
     }
 
+    public User() {
+
+    }
+
     // UserDetails interface methods
 
     // Get the authorities (roles) associated with the user
