@@ -40,7 +40,7 @@ public class WebSecurityConfig {
                 )
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/art-galleries", "/assets/**", "/register", "/contact", "/map", "/details/**", "/login")
+                        .requestMatchers("/", "/art-galleries", "/assets/**", "/register", "/contact", "/map/**", "/details/**", "/login")
                         .permitAll()
                         .requestMatchers("/images/**").permitAll()
                         .requestMatchers("/**.js", "/**.css", "**.json").permitAll()
