@@ -1,0 +1,137 @@
+
+<div class="container" style="height: 400px;" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <div class="row" >
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h4 th:text="${gallery.getName()}" th:style="'font-weight:bold; color: #201261;'"></h4>
+                <p class="mb-0"></p>
+            </div>
+            <br/>
+            <div class="project-info-box">
+                <p th:text="${gallery.getAddress()} + ', ' + ${gallery.getCity()}" th:style="'margin: 0;'"><b>Address</b></p>
+                <p th:text=" (${gallery.getWorking_hours()} == 'нема' ? 'Работно време: нема' : ${gallery.getWorking_hours()})"></p>
+                <p style="font-weight: bold; color: #201261; font-size: larger">Следни настани: </p>
+                <p th:text="${upcomingEventText}" ></p>
+
+
+            </div><!-- / project-info-box -->
+            <!-- / project-info-box -->
+
+        </div><!-- / column -->
+
+
+
+        <!-- Detail Page Structure -->
+        <style>
+            .gallery-details {
+                margin-top: 20px;
+            }
+
+            .upcoming-events {
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-left: 30px;
+            }
+
+            .upcoming-event-text{
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+
+            }
+        </style>
+
+
+        <div class="col-md-5">
+            <img id="details-picture"  th:src="${gallery.getImage()}" alt="" >
+        </div><!-- / column -->
+
+    </div>
+
+    <div class="row" >
+        <div class="col-md-7" style="margin: auto">
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="text"></label>
+
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text"></label>
+
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text"></label>
+
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text"></label>
+
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text"></label>
+
+            </div>
+        </div>
+    </div>
+    <div class="row" xmlns:sec="http://www.w3.org/1999/xhtml"  >
+        <div class="col-sm" id="details-comment" sec:authorize="isAuthenticated()" >
+            <div style="width: inherit; height: 58px; margin: auto" >
+                <form th:action="@{'/comments/{id}' (id=${gallery.id})}" th:method="post">
+                    <div class="row">
+                        <div style="width: inherit; display: flex;">
+                            <textarea name="comment" placeholder="Додај коментар..." id="details-text" style="display: inline-block; width: 350px; margin-right: 15px"></textarea>
+                        </div>
+                        <input th:value="${#authorization.getAuthentication().name}" name="nameUser" type="hidden"></input>
+                        <input type="hidden" name="rating" id="rating" />
+
+                        <!-- Your star rating inputs... -->
+                        <div style="width: inherit; display: flex;">
+                            <button type="submit" class="btn login-submit">Внеси коментар</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+
+    <br/><br/>
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+
+<div class="container" >
+    <div class="card" th:if="${commentsExist}" th:each="comment : ${comments}" style="width: 50%;margin: auto">
+
+        <div class="card-body" >
+            <div class="row justify-content-center" >
+
+
+                <div class="col-md-2">
+                    <img src="../images/avatar.png" class="img img-rounded img-fluid"/>
+                </div>
+                <div class="col-md-10" >
+                    <p>
+                        <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html" th:text="${comment.nameOfUser}" style="font-size: large; color: #915fc6"></a>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+                    </p>
+                    <div class="clearfix"></div>
+                    <p th:text="${comment.getText()}"></p>
+                    <p th:text="${comment.timestamp}" style="font-size: smaller"></p>
+                    <p>
+<!--                        <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>-->
+<!--                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>-->
+                    </p>
+                </div>
+             </div>
+
+        </div>
+    </div>
+</div>
