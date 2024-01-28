@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f84c692f-871e-462a-9540-72dc6cc6dc24" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/api-gateway/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/api-gateway/src/main/java/org/example/ApiGateway.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/api-gateway/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/api-gateway/target/maven-plugin-help.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/DiansApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/bootstrap/DataHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/config/CustomUsernamePasswordAuthenticationProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/Gallery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/exceptions/InvalidArgumentExceptions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/exceptions/InvalidUserCredentialsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/exceptions/PasswordDoNotMatchException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/model/exceptions/UsernameAlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/repository/inmem/InMemoryGalleryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/repository/inmem/InMemoryUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/repository/jpa/JpaCommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/repository/jpa/JpaGalleryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/repository/jpa/JpaUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/GalleryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/impl/AuthServiceImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/impl/CommentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/impl/GalleryServiceImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/CommentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/ContactController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/DetailsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/LogoutController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/MapController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/RegisterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/java/com/dians/web/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/application-h2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/application-prod.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/galleriesList.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/headerStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/images/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/images/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/images/izlozba.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/images/logo2-upd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/images/nacionalnata-galerija.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/loginStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/static/starRatingStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/access-denied.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/contact.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/fragments/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/master-template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/main/resources/templates/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/artways/src/test/java/com/dians/DiansApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/src/main/java/org/example/CommentsApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/src/main/java/org/example/model/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/src/main/java/org/example/repository/JpaCommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/src/main/java/org/example/service/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/src/main/java/org/example/service/CommentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/src/main/java/org/example/web/CommentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/target/classes/org/example/CommentsApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/target/classes/org/example/model/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/target/classes/org/example/repository/JpaCommentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/target/classes/org/example/service/CommentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/target/classes/org/example/service/CommentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/comment-service/target/classes/org/example/web/CommentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/discovery-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/discovery-service/src/main/java/org/example/DiscoveryServerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/discovery-service/src/main/resources/discovery-server.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/discovery-service/target/classes/discovery-server.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/discovery-service/target/classes/org/example/DiscoveryServerApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/GalleryApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/model/Gallery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/repository/JpaGalleryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/service/GalleryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/service/GalleryServiceImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/web/DetailsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/web/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/java/org/example/web/MapController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/gallery-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/UserApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/repository/JpaUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/service/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/service/AuthServiceImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/service/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/web/LoginRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/web/LogoutRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/java/org/example/web/UserRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../micro/user-service/src/main/resources/application.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2baqW0jg6PElhc8WKrrUQ0Eamiv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "openjdk-19",
+    "last_opened_file_path": "C:/Users/Bojana/Desktop/DIANS-proekt/Domasno4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "show.run.dashboard.notification": "false",
+    "spring.configuration.checksum": "4579001fa8798395179ed27e513ccbb9"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="main.java.com.dians" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bojana\Desktop\DIANS-proekt\micro\artways" />
+      <recent name="C:\Users\Bojana\Desktop\DIANS-proekt\micro\artways\src" />
+      <recent name="C:\Users\Bojana\Desktop\DIANS-proekt\micro\artways\src\main" />
+      <recent name="C:\Users\Bojana\Desktop\DIANS-proekt\micro\artways\src\main\java" />
+      <recent name="C:\Users\Bojana\Desktop\DIANS-proekt\micro\artways\src\main\java\com\dians" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bojana\Desktop\DIANS-proekt\micro\api-gateway\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.dians.bootstrap" />
+      <recent name="org.example.web" />
+      <recent name="org.example" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DiscoveryServerApplication">
+    <configuration name="ApiGateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="api-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.ApiGateway" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommentsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="comment-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.CommentsApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiansApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="dians" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dians.DiansApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiansApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="artways" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dians.DiansApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dians.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="discovery-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.DiscoveryServerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.DiscoveryServerApplication" />
+        <item itemvalue="Spring Boot.DiansApplication" />
+        <item itemvalue="Spring Boot.CommentsApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f84c692f-871e-462a-9540-72dc6cc6dc24" name="Changes" comment="" />
+      <created>1706463567452</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706463567452</updated>
+      <workItem from="1706463569192" duration="4233000" />
+      <workItem from="1706472274519" duration="8618000" />
+      <workItem from="1706481094541" duration="39000" />
+      <workItem from="1706481147569" duration="241000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
